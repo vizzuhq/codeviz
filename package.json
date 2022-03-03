@@ -12,12 +12,23 @@
   "activationEvents": [
     "onCommand:ccVizzu.show"
   ],
+  "extensionDependencies": [
+    "uctakeoff.vscode-counter"
+  ],
   "main": "./out/extension.js",
   "contributes": {
+    "menus": {
+      "view/title": [
+        {
+          "command": "ccVizzu.show",
+          "when": "true"
+        }
+      ]
+    },    
     "commands": [
       {
         "command": "ccVizzu.show",
-        "title": "ccVizzu: Show"
+        "title": "ccVizzu: Show statistics"
       }
     ]
   },
@@ -41,6 +52,7 @@
     "vscode-test": "^1.5.0"
   },
   "dependencies": {
+    "vizzu": "^0.4.3",
     "@vscode/webview-ui-toolkit": "^0.9.1"
   }
 }
