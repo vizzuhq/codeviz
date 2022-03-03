@@ -2,7 +2,7 @@ import { Disposable, Webview, WebviewPanel, window, Uri, ViewColumn } from "vsco
 import { getUri } from "../utilities/getUri";
 import { PageGenerator } from "./pageGen";
 
-export class CCVizzuPanel {
+export default class CCVizzuPanel {
     public static currentPanel: CCVizzuPanel | undefined;
     private _pageGen: PageGenerator;
     private readonly _panel: WebviewPanel;
@@ -15,7 +15,7 @@ export class CCVizzuPanel {
         this._pageGen = new PageGenerator(panel, extensionUri);
     }
 
-    public static reveal() {
+    public static reveal(data: Object) {
         if (this.currentPanel != undefined)
             this.currentPanel._panel.reveal();
     }
