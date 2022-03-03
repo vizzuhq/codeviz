@@ -20,11 +20,17 @@ export default class VSCCDataPrep {
 	}
 
 	makeDataTable(rawData: Object) {
+        let data = rawData as IStringIndex;
         let codeCounterData: Result[] = [];
         for(var propertyName in rawData) {
             let item: Result = new Result;
-            item.filename = propertyName;
-            item.blank = rawData[propertyName];
+            item.uri = Uri.parse(propertyName);
+            item.language = data[propertyName]['language'];
+            item.code = data[propertyName]['code'];
+            item.blank = data[propertyName]['blank'];
+            item.comment = data[propertyName]['comment'];
+            item.filename = item.uri.path;
+            codeCounterData.push(item);
         }
 		this.preparePathFragments(codeCounterData);
 		this.removeRedundantPathFragments();

@@ -1,5 +1,4 @@
 import { Disposable, Webview, WebviewPanel, window, Uri, ViewColumn } from "vscode";
-import { getUri } from "../utilities/getUri";
 import { PageGenerator } from "./pageGen";
 
 export default class CCVizzuPanel {
@@ -7,6 +6,7 @@ export default class CCVizzuPanel {
     private _pageGen: PageGenerator;
     private readonly _panel: WebviewPanel;
     private _disposables: Disposable[] = [];
+    private _dataTable: any;
 
     private constructor(panel: WebviewPanel, extensionUri: Uri) {
         this._panel = panel;
@@ -15,9 +15,19 @@ export default class CCVizzuPanel {
         this._pageGen = new PageGenerator(panel, extensionUri);
     }
 
-    public static reveal(data: Object) {
-        if (this.currentPanel != undefined)
-            this.currentPanel._panel.reveal();
+    public static refresh(data: Object) {
+        if (this.currentPanel != undefined) {
+            let refreshReq = this.currentPanel._dataTable != undefined;
+            this.currentPanel._dataTable = data;
+            let panel = this.currentPanel._panel;
+            panel.reveal(ViewColumn.One);
+            if (refreshReq) {
+                panel.webview.postMessage({
+                    command: 'refresh-data-table',
+                    dataTable: data
+                });
+            }
+        }
     }
 
     public static async render(extensionUri: Uri) {
@@ -54,12 +64,18 @@ export default class CCVizzuPanel {
                 const command = message.command;
                 const text = message.text;
                 switch (command) {
+                    case "vizzu-ready":
+                        this._panel.webview.postMessage({
+                            command: 'refresh-data-table',
+                            dataTable: this._dataTable
+                        });
+                        return;
                     case "showinfo":
-                    window.showInformationMessage(text);
-                    return;
+                        window.showInformationMessage(text);
+                        return;
                     case "showerror":
-                    window.showErrorMessage(text);
-                    return;
+                        window.showErrorMessage(text);
+                        return;
                 }
             },
             undefined,

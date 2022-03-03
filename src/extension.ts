@@ -19,7 +19,7 @@ export function activate(context: ExtensionContext) {
                 if (source.data != undefined) {
                     let data = new VSCCDataPrep();
                     data.makeDataTable(source.data);
-                    CCVizzuPanel.reveal(data.getDataTable());
+                    CCVizzuPanel.refresh(data.getDataTable());
                 }
                 else
                     window.showErrorMessage('\'Code Counter\' data is not awailable!');

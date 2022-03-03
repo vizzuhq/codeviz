@@ -35,7 +35,6 @@ export class PageGenerator {
         this._content = this._content.replace('${stylesCtrlUri}', stylesCtrlUri.toString());
         this._content = this._content.replace('${scriptUri}', '<script src="' + scriptUri.toString() + '"></script>');
         this._content = this._content.replace('${scriptAnim}', animScripts.toString());
-        console.log(this._content);
     }
 
     public getHtmlContent() {
