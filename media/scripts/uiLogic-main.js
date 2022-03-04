@@ -8,7 +8,7 @@ let infoChart = undefined;
         switch (message.command) {
             case 'refresh-data-table':
                 await initializingVizzuCharts(message.dataTable);
-                performInitAnimations();
+                performInitAnimation();
                 updateInfoLabelsContent(message.dataSummary);
             break;
         }

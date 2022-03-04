@@ -34,3 +34,17 @@
     width: 100%;
     grid-template-rows: auto auto;
 }
+
+.click-label {
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+
+.click-label:disabled {
+    border: none;
+    background-color: transparent;
+    color: rgb(97, 97, 97);
+    cursor: not-allowed;
+}

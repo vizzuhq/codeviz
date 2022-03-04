@@ -1,10 +1,53 @@
+function allDescendants(node, fn) {
+    if (node == undefined || fn == undefined)
+        return;
+    for (var i = 0; i < node.childNodes.length; i++) {
+      var child = node.childNodes[i];
+      allDescendants(child, fn);
+      fn(child);
+    }
+}
+
 function disableControls() {
+    let ctrlDiv = document.getElementById("idControlDiv");
+    allDescendants(ctrlDiv, function(child) {
+         child.disabled = true;
+    });
 }
 
 function enableControls() {
+    let ctrlDiv = document.getElementById("idControlDiv");
+    allDescendants(ctrlDiv, function(child) { child.disabled = false; });
 }
 
 function onNavChartClick() {
+}
+
+function onDisplayTypeChanged() {
+    readAnimationVariables();
+    performAnimation();
+}
+
+function onLabelBack() {
+}
+
+function onLabelShowFiles() {
+}
+
+function onCheckboxLanguages() {
+    readAnimationVariables();
+    performAnimation();
+}
+
+function onCheckboxFiles() {
+    readAnimationVariables();
+    performAnimation();
+}
+
+function onLabelShowFiles() {
+}
+
+function onCheckboxSelectFolder() {
 }
 
 function updateInfoLabelsContent(info) {
@@ -23,4 +66,21 @@ function updateInfoLabelsContent(info) {
     code_label.textContent = info.codeCount.toString();
     comment_label.textContent = info.commentCount.toString();
     blank_label.textContent = info.blankCount.toString();
+}
+
+function readAnimationVariables() {
+    const ctrl1 = document.getElementById('idLineCount');
+    state_lc = ctrl1.ariaSelected;
+    const ctrl2 = document.getElementById('idFileCount');
+    state_fc = ctrl2.ariaSelected;
+    const ctrl3 = (document.getElementById('idChkBoxFiles'));
+    state_f = ctrl3.checked;
+    const ctrl4 = (document.getElementById('idChkBoxLang'));
+    state_l = ctrl4.checked;
+}
+
+function setFilesChekboxState(disabled, checked) {
+    const ctrl = (document.getElementById('idChkBoxFiles'));
+    ctrl.disabled = disabled;
+    ctrl.checked = checked;
 }
