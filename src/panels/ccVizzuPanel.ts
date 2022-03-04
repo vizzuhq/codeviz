@@ -1,12 +1,14 @@
 import { Disposable, Webview, WebviewPanel, window, Uri, ViewColumn } from "vscode";
 import { PageGenerator } from "./pageGen";
+import { Summary } from "../data/VSCC_Result";
 
-export default class CCVizzuPanel {
+export class CCVizzuPanel {
     public static currentPanel: CCVizzuPanel | undefined;
     private _pageGen: PageGenerator;
     private readonly _panel: WebviewPanel;
     private _disposables: Disposable[] = [];
     private _dataTable: any;
+    private _dataSummary: any;
 
     private constructor(panel: WebviewPanel, extensionUri: Uri) {
         this._panel = panel;
@@ -15,16 +17,18 @@ export default class CCVizzuPanel {
         this._pageGen = new PageGenerator(panel, extensionUri);
     }
 
-    public static refresh(data: Object) {
+    public static refresh(data: Object, summ: Summary) {
         if (this.currentPanel != undefined) {
             let refreshReq = this.currentPanel._dataTable != undefined;
             this.currentPanel._dataTable = data;
+            this.currentPanel._dataSummary = summ;
             let panel = this.currentPanel._panel;
             panel.reveal(ViewColumn.One);
             if (refreshReq) {
                 panel.webview.postMessage({
                     command: 'refresh-data-table',
-                    dataTable: data
+                    dataTable: data,
+                    dataSummary: summ
                 });
             }
         }
@@ -67,7 +71,8 @@ export default class CCVizzuPanel {
                     case "vizzu-ready":
                         this._panel.webview.postMessage({
                             command: 'refresh-data-table',
-                            dataTable: this._dataTable
+                            dataTable: this._dataTable,
+                            dataSummary: this._dataSummary
                         });
                         return;
                     case "showinfo":

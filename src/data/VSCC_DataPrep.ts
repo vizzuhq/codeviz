@@ -1,12 +1,11 @@
 import { Uri } from "vscode";
-import Result from "./VSCC_Result";
+import { Result } from "./VSCC_Result";
 
 interface IStringIndex {
     [key: string]: any
 }
 
-export default class VSCCDataPrep {
-    
+export class VSCCDataPrep {
     public fileCount: number = 0;
 	public codeLinesCount: number = 0;
 	public blankLinesCount: number = 0;

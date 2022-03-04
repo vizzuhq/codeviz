@@ -9,6 +9,7 @@ let infoChart = undefined;
             case 'refresh-data-table':
                 await initializingVizzuCharts(message.dataTable);
                 performInitAnimations();
+                updateInfoLabelsContent(message.dataSummary);
             break;
         }
     });

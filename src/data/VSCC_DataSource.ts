@@ -1,7 +1,9 @@
 import { Uri } from "vscode";
 
-export default class VSCCDataSource {
+export class VSCCDataSource {
     public data: object = Object;
+    public folder: String = '';
+    public date: String = '';
     private _dataFolderUri: Uri;
 
     public constructor(wsUri: Uri) {
@@ -11,21 +13,24 @@ export default class VSCCDataSource {
     }
 
 	private _selectDataSourceFolder(wsUri: Uri) {
-		let result: {data: String, path: String}[] = [];
+		let result: {date: String, path: String}[] = [];
         let vsccFolder = Uri.joinPath(wsUri, '.VSCodeCounter');
 		const fs = require('fs');
 		const dirPath = fs.readdirSync(this._dataFolderUri.path);
 		dirPath.map((item: String) => {
             let path = Uri.joinPath(this._dataFolderUri, item.valueOf());
-            result.push({data: item, path: path.path});
+            result.push({date: item, path: path.path});
 		});
         if (result.length) {
             result.sort();
-            this._dataFolderUri = Uri.file(result[result.length - 1].path.valueOf());
+            this.folder = wsUri.path;
+            this.date = result[result.length - 1].date;
+            let path = result[result.length - 1].path.valueOf();
+            this._dataFolderUri = Uri.file(path.valueOf());
         }
 	}
 
-    private _readDataSource() {        
+    private _readDataSource() {
         if (this._dataFolderUri == undefined)
             return;
         const fs = require('fs');

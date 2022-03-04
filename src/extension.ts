@@ -1,8 +1,9 @@
 import { commands, window, ExtensionContext, workspace, Uri } from "vscode";
 
-import CCVizzuPanel from "./panels/ccVizzuPanel";
-import VSCCDataSource from "./data/VSCC_DataSource";
-import VSCCDataPrep from "./data/VSCC_DataPrep";
+import { CCVizzuPanel } from "./panels/ccVizzuPanel";
+import { VSCCDataSource } from "./data/VSCC_DataSource";
+import { VSCCDataPrep } from "./data/VSCC_DataPrep";
+import { Summary } from "./data/VSCC_Result";
 
 export function activate(context: ExtensionContext) {
     const showCommand = commands.registerCommand("ccVizzu.show", () => {
@@ -19,7 +20,7 @@ export function activate(context: ExtensionContext) {
                 if (source.data != undefined) {
                     let data = new VSCCDataPrep();
                     data.makeDataTable(source.data);
-                    CCVizzuPanel.refresh(data.getDataTable());
+                    CCVizzuPanel.refresh(data.getDataTable(), new Summary(source, data));
                 }
                 else
                     window.showErrorMessage('\'Code Counter\' data is not awailable!');
