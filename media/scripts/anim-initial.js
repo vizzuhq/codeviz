@@ -12,9 +12,10 @@ function anim_init(chart) {
             legend: null,
             sort: 'none',
             reverse: true,
+            title: null
         },
         style: {
-//            fontSize:'1.1em',
+//          fontSize:'1.1em',
             backgroundColor: '#00000000',
             logo: { filter: 'opacity(0)' },
             legend: { width: '9em', marker: { size: '11' }, paddingLeft: '0', paddingRight: '0' },
