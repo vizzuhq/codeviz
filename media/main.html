@@ -3,9 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="${stylesCtrlUri}"></link>
-        <script type="module" src="${toolkitUri}"></script>
-        <title>Hello World</title>
+        <link rel="stylesheet" href="${styleMain}"></link>
+        <script type="module" src="${scriptToolkit}"></script>
+        <title>Code Counter Vizzu</title>
     </head>
     <body>
         <h1 class="title" id="label_title">Code Counter Vizzu</h1>
@@ -21,8 +21,6 @@
             <div style="aspect-ratio: 1/1; width: 100%;" id="navVizzu"></div>
             <div style="aspect-ratio: 2/1; width: 100%;" id="infoVizzu"></div>
         </div>
-        <vscode-button onclick="onBackClick()">Back</vscode-button>
-        ${scriptUri}
-        ${scriptAnim}
+        ${scripts}
     </body>
 </html>

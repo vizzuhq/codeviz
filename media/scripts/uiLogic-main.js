@@ -15,13 +15,24 @@ let infoChart = undefined;
     importVizzuLibAndCreateCharts();
 }());
 
-function disableControls() {
-}
-
-function enableControls() {
-}
-
-function onNavChartClick() {
+function importVizzuLibAndCreateCharts() {
+    if (navChart == undefined || infoChart == undefined) {
+        navChart = undefined;
+        infoChart = undefined;
+        let promise = import('../../node_modules/vizzu/dist/vizzu.min.js');
+        promise.then( (Vizzu) => {
+            try {
+                navChart = new Vizzu.default('navVizzu');
+                infoChart = new Vizzu.default('infoVizzu');
+                vscode.postMessage({ command: 'vizzu-ready' });
+            }
+            catch (e) {
+                vscode.postMessage({ command: 'showerror', text: 'Vizzu initialization failure: ' + e });
+            }
+        }).catch( (e) => {
+            vscode.postMessage({ command: 'showerror', text: 'Vizzu library import failure: ' + e });
+        });
+    }
 }
 
 async function initializingVizzuCharts(data) {
@@ -32,31 +43,4 @@ async function initializingVizzuCharts(data) {
         .initializing
         .then(navChart => navChart.animate({data: data}));
     navChart.on('click', onNavChartClick);
-}
-
-function performInitAnimations() {
-    disableControls();
-    let promise1 = anim_init(infoChart);
-    let promise2 = nav_anim_init(navChart);
-    Promise.all([promise1, promise2]).then(enableControls());
-}
-
-function importVizzuLibAndCreateCharts() {
-    if (navChart == undefined || infoChart == undefined) {
-        navChart = undefined;
-        infoChart = undefined;
-        let promise = import('../node_modules/vizzu/dist/vizzu.min.js');
-        promise.then( (Vizzu) => {
-            try {
-                navChart = new Vizzu.default('navVizzu');
-                infoChart = new Vizzu.default('infoVizzu');
-                vscode.postMessage({ command: 'vizzu-ready' });
-            }
-            catch (e) {
-                vscode.postMessage({ command: 'showerror', text: 'Vizzu init failure: ' + e });
-            }
-        }).catch( (e) => {
-            vscode.postMessage({ command: 'showerror', text: 'Vizzu import failure: ' + e });
-        });
-    }
 }

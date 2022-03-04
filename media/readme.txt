@@ -13,8 +13,6 @@ Data series names:
 
 File tetején= chart, dirLevel
 
-
-
 Control state transitions:
     1000-1001 Line count + Files (Final 6)
     1001-1000 Line count - Files (Final 6)
@@ -42,9 +40,6 @@ Control state transitions:
 
     1011-0110 Line count, Languages, Files <-> File count - Files (Final 8)
     0110-1011 File count, Languages <-> Line count + Files (Final8)
-
-
-
 
 Animation with one step:
     chart.animate({
