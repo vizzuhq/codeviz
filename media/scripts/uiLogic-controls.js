@@ -17,7 +17,9 @@ function disableControls() {
 
 function enableControls() {
     let ctrlDiv = document.getElementById("idControlDiv");
-    allDescendants(ctrlDiv, function(child) { child.disabled = false; });
+    allDescendants(ctrlDiv, function(child) {
+        child.disabled = false;
+    });
 }
 
 function onNavChartClick() {
@@ -70,9 +72,9 @@ function updateInfoLabelsContent(info) {
 
 function readAnimationVariables() {
     const ctrl1 = document.getElementById('idLineCount');
-    state_lc = ctrl1.ariaSelected;
+    state_lc = ctrl1.selected;
     const ctrl2 = document.getElementById('idFileCount');
-    state_fc = ctrl2.ariaSelected;
+    state_fc = ctrl2.selected;
     const ctrl3 = (document.getElementById('idChkBoxFiles'));
     state_f = ctrl3.checked;
     const ctrl4 = (document.getElementById('idChkBoxLang'));

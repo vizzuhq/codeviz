@@ -10,6 +10,7 @@ let infoChart = undefined;
                 await initializingVizzuCharts(message.dataTable);
                 performInitAnimation();
                 updateInfoLabelsContent(message.dataSummary);
+                dirMaxDepth = message.dataSummary.depth;
             break;
         }
     });
