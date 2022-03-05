@@ -44,5 +44,5 @@ async function initializingVizzuCharts(data) {
     await navChart
         .initializing
         .then(navChart => navChart.animate({data: data}));
-    navChart.on('click', performFilteringAnimation);
+    navChart.on('click', performFilteringAnimationFw);
 }

@@ -34,17 +34,13 @@ function performAnimation() {
     eval(code);
     Promise.all([promise1]).then(() => {
         if (navAnimationType == 'switchToLineCount') {
-            let code = 'promise2 = nav_anim_01xx_10xx(navChart, dirFilter.length);';
-            eval(code);
-            Promise.all([promise2]).then( () => {
+            nav_anim_01xx_10xx(navChart, dirFilter.length).then(() => {
                 leaveTransientState();
                 state_f_restore = false;
             });
         }
         else if (navAnimationType == 'switchToFileCount') {
-            let code = 'promise2 = nav_anim_10xx_01xx(navChart, dirFilter.length);';
-            eval(code);
-            Promise.all([promise2]).then( () => {
+            nav_anim_10xx_01xx(navChart, dirFilter.length).then(() => {
                 leaveTransientState();
             });
         }
@@ -54,17 +50,37 @@ function performAnimation() {
     updateAnimationVariables();
 }
 
-function performFilteringAnimation(event) {
+function performFilteringAnimationFw(event) {
     if (event.data.marker != undefined) {
         if (dirMaxDepth > dirFilter.length) {
+            setBackLabelState(false);
             let level = dirFilter.length;
             let levelStr = 'Folder level ' + level.toString();
             let filterStr = event.data.marker.categories[levelStr];
             dirFilter.push(filterStr);
-            applyFilter();
+            applyFilterFw();
         }
         else
-            vscode.postMessage({ command: 'showinfo', text: 'Filtering is not possible!' });
+            vscode.postMessage({ command: 'showinfo', text: 'No more folder under this level!' });
+    }
+}
+
+function performFilteringAnimationBw() {
+    if (dirFilter.length > 0) {
+        enterTransientState();
+        if (dirMaxDepth > dirFilter.length) {
+            if (state_lc)
+                nav_anim_10xx_filter_bw(navChart, dirFilter.length - 1).then(() => {
+                    applyFilterBw();
+                });
+            else
+                nav_anim_01xx_filter_bw(navChart, dirFilter.length - 1).then(() => {
+                    applyFilterBw();
+                });
+        }
+        else {
+            applyFilterBw();
+        }
     }
 }
 
@@ -125,7 +141,7 @@ function updateAnimationVariables() {
     last_state_fc = state_fc;
 }
 
-function applyFilter() {
+function applyFilterFw() {
     enterTransientState();
     let promise1 = nav_anim_record_filter(infoChart, (record) => selectRecord(record));
     let promise2 = nav_anim_record_filter(navChart, (record) => selectRecord(record));
@@ -138,6 +154,17 @@ function applyFilter() {
         }
         else
             leaveTransientState();
+    });
+}
+
+function applyFilterBw() {
+    dirFilter.pop();
+    if (dirFilter == 0)
+        setBackLabelState(true);
+    let promise1 = nav_anim_record_filter(infoChart, (record) => selectRecord(record));
+    let promise2 = nav_anim_record_filter(navChart, (record) => selectRecord(record));
+    Promise.all([promise1, promise2]).then(() => {
+        leaveTransientState();
     });
 }
 

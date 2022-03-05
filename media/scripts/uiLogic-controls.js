@@ -1,3 +1,5 @@
+let backLabelDisabled = true;
+
 function allDescendants(node, fn) {
     if (node == undefined || fn == undefined)
         return;
@@ -11,13 +13,16 @@ function allDescendants(node, fn) {
 function disableControls() {
     let ctrlDiv = document.getElementById("idControlDiv");
     allDescendants(ctrlDiv, function(child) {
-         child.disabled = true;
+        child.disabled = true;
     });
 }
 
 function enableControls() {
     let ctrlDiv = document.getElementById("idControlDiv");
     allDescendants(ctrlDiv, function(child) {
+        if (child.id == 'idBackLabel') {
+            child.disabled = backLabelDisabled;
+        }
         child.disabled = false;
     });
 }
@@ -28,6 +33,7 @@ function onDisplayTypeChanged() {
 }
 
 function onLabelBack() {
+    performFilteringAnimationBw();
 }
 
 function onLabelShowFiles() {
@@ -82,4 +88,14 @@ function setFilesChekboxState(disabled, checked) {
     const ctrl = (document.getElementById('idChkBoxFiles'));
     ctrl.disabled = disabled;
     ctrl.checked = checked;
+}
+
+function setBackLabelState(disabled) {
+    const ctrl = (document.getElementById('idBackLabel'));
+    ctrl.disabled = disabled;
+    if (disabled)
+        ctrl.textContent = 'Click on folder below to open!';
+    else
+        ctrl.textContent = 'Click here to step back!';
+    backLabelDisabled = disabled;
 }
