@@ -16,26 +16,6 @@ let last_state_fc = false;
 let dirFilter = [];
 let dirMaxDepth = 0;
 
-function enterTransientState() {
-    if (inTransientState)
-        return false;
-    disableControls();
-    inTransientState = true;
-    return true;
-}
-
-function leaveTransientState() {
-    if (!inTransientState)
-        return false;
-    enableControls();
-    if (navAnimationType == 'switchToLineCount')
-        setFilesChekboxState(false, state_f_restore);
-    if (state_f_disabled)
-        setFilesChekboxState(true, false);
-    inTransientState = false;
-    return true;
-}
-
 function performInitAnimation() {
     if (!enterTransientState())
         return;
@@ -74,6 +54,40 @@ function performAnimation() {
     updateAnimationVariables();
 }
 
+function performFilteringAnimation(event) {
+    if (event.data.marker != undefined) {
+        if (dirMaxDepth > dirFilter.length) {
+            let level = dirFilter.length;
+            let levelStr = 'Folder level ' + level.toString();
+            let filterStr = event.data.marker.categories[levelStr];
+            dirFilter.push(filterStr);
+            applyFilter();
+        }
+        else
+            vscode.postMessage({ command: 'showinfo', text: 'Filtering is not possible!' });
+    }
+}
+
+function enterTransientState() {
+    if (inTransientState)
+        return false;
+    disableControls();
+    inTransientState = true;
+    return true;
+}
+
+function leaveTransientState() {
+    if (!inTransientState)
+        return false;
+    enableControls();
+    if (navAnimationType == 'switchToLineCount')
+        setFilesChekboxState(false, state_f_restore);
+    if (state_f_disabled)
+        setFilesChekboxState(true, false);
+    inTransientState = false;
+    return true;
+}
+
 function encodeAnimFunctionName() {
     let state = '';
     let lastState = '';
@@ -109,4 +123,30 @@ function updateAnimationVariables() {
     last_state_f = state_f;
     last_state_lc = state_lc;
     last_state_fc = state_fc;
+}
+
+function applyFilter() {
+    enterTransientState();
+    let promise1 = nav_anim_record_filter(infoChart, (record) => selectRecord(record));
+    let promise2 = nav_anim_record_filter(navChart, (record) => selectRecord(record));
+    Promise.all([promise1, promise2]).then(() => {
+        if (dirMaxDepth > dirFilter.length) {
+            if (state_lc)
+                nav_anim_10xx_filter_fw(navChart, dirFilter.length).then(() => leaveTransientState());
+            else
+                nav_anim_01xx_filter_fw(navChart, dirFilter.length).then(() => leaveTransientState());
+        }
+        else
+            leaveTransientState();
+    });
+}
+
+function selectRecord(record) {
+    for(let i = 0; i < dirFilter.length; i++) {
+        let name = 'Folder level ' + i;
+        let value = dirFilter[i];
+        if (record[name] != value)
+            return false;
+    }
+    return true;
 }

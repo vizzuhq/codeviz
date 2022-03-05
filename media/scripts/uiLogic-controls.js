@@ -22,9 +22,6 @@ function enableControls() {
     });
 }
 
-function onNavChartClick() {
-}
-
 function onDisplayTypeChanged() {
     readAnimationVariables();
     performAnimation();
