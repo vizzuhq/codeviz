@@ -57,8 +57,13 @@ function performFilteringAnimationFw(event) {
             let level = dirFilter.length;
             let levelStr = 'Folder level ' + level.toString();
             let filterStr = event.data.marker.categories[levelStr];
-            dirFilter.push(filterStr);
-            applyFilterFw();
+            if (dirFilter[dirFilter.length - 1] == filterStr)
+                vscode.postMessage({ command: 'showinfo', text: 'No more folder under this level!' });
+            else {    
+                dirFilter.push(filterStr);
+                applyFilterFw();
+                vscode.postMessage({ command: 'showinexplorer', text: filterStr });
+            }
         }
         else
             vscode.postMessage({ command: 'showinfo', text: 'No more folder under this level!' });
@@ -165,6 +170,8 @@ function applyFilterBw() {
     let promise2 = nav_anim_record_filter(navChart, (record) => selectRecord(record));
     Promise.all([promise1, promise2]).then(() => {
         leaveTransientState();
+        let filterStr = dirFilter[dirFilter.length - 1];
+        vscode.postMessage({ command: 'showinexplorer', text: filterStr });
     });
 }
 
