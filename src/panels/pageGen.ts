@@ -25,9 +25,12 @@ export class PageGenerator {
         const scripts = this._collectScripts(Uri.joinPath(this._pathOnDisk, 'scripts').path);
         const stylesControlPath = Uri.joinPath(this._extensionUri, 'media', 'main.css');
         const styleMain = this._view.asWebviewUri(stylesControlPath);
+        const logoPath = Uri.joinPath(this._extensionUri, 'media', 'vizzu_logo.png');
+        const logo = this._view.asWebviewUri(logoPath);
         this._content = this._content.replace('${styleMain}', styleMain.toString());
         this._content = this._content.replace('${scriptToolkit}', toolkitUri.toString());
         this._content = this._content.replace('${scripts}', scripts.toString());
+        this._content = this._content.replace('${logo}', logo.toString());
     }
 
     public getHtmlContent() {

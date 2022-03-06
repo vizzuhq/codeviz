@@ -1,4 +1,4 @@
-import { Disposable, Webview, WebviewPanel, window, Uri, ViewColumn } from "vscode";
+import { Disposable, Webview, WebviewPanel, window, Uri, ViewColumn, env } from "vscode";
 import { PageGenerator } from "./pageGen";
 import { Summary } from "../data/VSCC_Result";
 
@@ -74,6 +74,9 @@ export class CCVizzuPanel {
                             dataTable: this._dataTable,
                             dataSummary: this._dataSummary
                         });
+                        return;
+                    case "openlink":
+                        env.openExternal(Uri.parse(text));
                         return;
                     case "showinfo":
                         window.showInformationMessage(text);

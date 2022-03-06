@@ -49,10 +49,11 @@ function onCheckboxFiles() {
     performAnimation();
 }
 
-function onLabelShowFiles() {
+function onCheckboxSelectFolder() {
 }
 
-function onCheckboxSelectFolder() {
+function onVizzuLogo() {
+    vscode.postMessage({ command: 'openlink', text: 'https://vizzuhq.com' });
 }
 
 function updateInfoLabelsContent(info) {
@@ -93,9 +94,13 @@ function setFilesChekboxState(disabled, checked) {
 function setBackLabelState(disabled) {
     const ctrl = (document.getElementById('idBackLabel'));
     ctrl.disabled = disabled;
-    if (disabled)
+    if (disabled) {
         ctrl.textContent = 'Click on folder below to open!';
-    else
+        ctrl.style.cursor = 'default';
+    }
+    else {
         ctrl.textContent = 'Click here to step back!';
+        ctrl.style.cursor = 'pointer';
+    }
     backLabelDisabled = disabled;
 }
