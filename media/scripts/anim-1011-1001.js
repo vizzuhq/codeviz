@@ -3,7 +3,7 @@ function anim_1011_1001(chart) {
     return chart.animate({
         config: {
             channels: {
-                y: { set: ['File name', 'Language'], range: { min: '0%', max: '100%' } },
+                y: { set: ['Language', 'File name'], range: { min: '0%', max: '100%' } },
                 x: { set: ['Line count'] },
                 color: { set: ['Language'] }
             },
@@ -26,7 +26,7 @@ function anim_1011_1001(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['File name', 'Language'], range: { min: '0%', max: '100%' } },
+                    y: { set: ['Language', 'File name'], range: { min: '0%', max: '100%' } },
                     x: { set: ['Line count'] },
                     color: { detach: ['Language'] },
                     label: { set: null }
