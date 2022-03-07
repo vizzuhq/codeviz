@@ -4,5 +4,5 @@ function nav_anim_record_filter(chart, filterFn) {
 			filter: record => filterFn(record)
 		}
     },
-    { duration: 0.5 });
+    { duration: 0.7 });
 }
