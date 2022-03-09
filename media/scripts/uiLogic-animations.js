@@ -32,20 +32,16 @@ function performAnimation() {
     navAnimationType = selectNavAnimationType();
     let code = 'promise1 = ' + encodeAnimFunctionName() + '(infoChart);';
     eval(code);
-    Promise.all([promise1]).then(() => {
-        if (navAnimationType == 'switchToLineCount') {
-            nav_anim_01xx_10xx(navChart, dirFilter.length).then(() => {
-                leaveTransientState();
-                state_f_restore = false;
-            });
-        }
-        else if (navAnimationType == 'switchToFileCount') {
-            nav_anim_10xx_01xx(navChart, dirFilter.length).then(() => {
-                leaveTransientState();
-            });
-        }
-        else
-            leaveTransientState();
+    if (navAnimationType == 'switchToLineCount') {
+        promise2 = nav_anim_01xx_10xx(navChart, dirFilter.length);
+    }
+    else if (navAnimationType == 'switchToFileCount') {
+        promise2 = nav_anim_10xx_01xx(navChart, dirFilter.length);
+    }
+    Promise.all([promise1, promise2]).then(() => {
+        if (navAnimationType == 'switchToLineCount')
+            state_f_restore = false;
+        leaveTransientState();
     });
     updateAnimationVariables();
 }
@@ -183,4 +179,18 @@ function selectRecord(record) {
             return false;
     }
     return true;
+}
+
+function navLabelDrawHandler(event) {
+    let label = event.data.text;
+    let tmp = label.split('/');
+    let origWidth = event.renderingContext.measureText(label).width;
+    if (tmp.length >= 2)
+        label = tmp[tmp.length - 2];
+    let textRect = event.renderingContext.measureText(label);
+    let height = textRect.actualBoundingBoxAscent + textRect.actualBoundingBoxDescent;
+    event.renderingContext.fillText(label,
+        event.data.rect.pos.x + event.data.rect.size.x - textRect.width,
+        event.data.rect.pos.y + (event.data.rect.size.y - height) / 2);
+  	event.preventDefault();
 }

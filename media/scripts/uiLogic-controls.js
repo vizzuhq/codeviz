@@ -53,7 +53,7 @@ function onCheckboxSelectFolder() {
 }
 
 function onVizzuLogo() {
-    vscode.postMessage({ command: 'openlink', text: 'https://vizzuhq.com' });
+    vscode.postMessage({ command: 'openlink', text: 'https://github.com/vizzuhq/vizzu-lib' });
 }
 
 function updateInfoLabelsContent(info) {

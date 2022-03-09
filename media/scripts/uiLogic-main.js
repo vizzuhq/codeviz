@@ -45,4 +45,5 @@ async function initializingVizzuCharts(data) {
         .initializing
         .then(navChart => navChart.animate({data: data}));
     navChart.on('click', performFilteringAnimationFw);
+    navChart.on('plot-axis-label-draw', navLabelDrawHandler);
 }

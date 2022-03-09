@@ -14,17 +14,19 @@ export function activate(context: ExtensionContext) {
                 wsPath = folder.uri;
         });
         commands.executeCommand('extension.vscode-counter.countInWorkspace').then(() => {
-            CCVizzuPanel.render(context.extensionUri).then(() => {
-                let source: VSCCDataSource;
-                source = new VSCCDataSource(wsPath);
-                if (source.data != undefined) {
-                    let data = new VSCCDataPrep();
-                    data.makeDataTable(source.data);
-                    CCVizzuPanel.refresh(data.getDataTable(), new Summary(source, data));
-                }
-                else
-                    window.showErrorMessage('\'Code Counter\' data is not awailable!');
-            });
+            setTimeout(() => {
+                CCVizzuPanel.render(context.extensionUri).then(() => {
+                    let source: VSCCDataSource;
+                    source = new VSCCDataSource(wsPath);
+                    if (source.data != undefined) {
+                        let data = new VSCCDataPrep();
+                        data.makeDataTable(source.data);
+                        CCVizzuPanel.refresh(data.getDataTable(), new Summary(source, data));
+                    }
+                    else
+                        window.showErrorMessage('\'Code Counter\' data is not awailable!');
+                });                    
+            }, 1000);
         });
     });
     context.subscriptions.push(showCommand);
