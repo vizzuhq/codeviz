@@ -92,15 +92,22 @@ function setFilesChekboxState(disabled, checked) {
 }
 
 function setBackLabelState(disabled) {
-    const ctrl = (document.getElementById('idBackLabel'));
-    ctrl.disabled = disabled;
+    const container = (document.getElementById('idBackLabelContainer'));
     if (disabled) {
-        ctrl.textContent = 'Click on folder below to open!';
-        ctrl.style.cursor = 'default';
+        container.innerHTML = `
+            <button id="idBackLabel" onclick="onLabelBack()">
+            Click on folder below to open!
+            </button>`;
+        const ctrl = (document.getElementById('idBackLabel'));
+        ctrl.disabled = disabled;
     }
     else {
-        ctrl.textContent = 'Click here to step back!';
-        ctrl.style.cursor = 'pointer';
+        container.innerHTML = `
+            <vscode-link id="idBackLabel" onclick="onLabelBack()">
+            Click here to go back!
+            </vscode-link>`;
+        const ctrl = (document.getElementById('idBackLabel'));
+        ctrl.disabled = disabled;
     }
     backLabelDisabled = disabled;
 }
