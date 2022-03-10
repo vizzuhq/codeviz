@@ -95,7 +95,7 @@ function setBackLabelState(disabled) {
     const container = (document.getElementById('idBackLabelContainer'));
     if (disabled) {
         container.innerHTML = `
-            <button id="idBackLabel" onclick="onLabelBack()">
+            <button class="click-label" id="idBackLabel" onclick="onLabelBack()">
             Click on folder below to open!
             </button>`;
         const ctrl = (document.getElementById('idBackLabel'));
