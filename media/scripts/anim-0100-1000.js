@@ -8,7 +8,7 @@ function anim_0100_1000(chart) {
                 color: { set: null },
                 label: { set: ['Line count'] },
             },
-            title: null, //1 code 1
+            //1 code 1
         },
         style: {
             legend: { paddingLeft: '5.789473684' },

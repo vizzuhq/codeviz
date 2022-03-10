@@ -8,7 +8,7 @@ function anim_1000_1010(chart) {
                 color: { set: null },
                 label: { set: ['Line count'] },
             },
-            title: null, //1 code 1
+            //1 code 1
         },
         style: {
             legend: { paddingLeft: '5.789473684' },
@@ -31,7 +31,7 @@ function anim_1000_1010(chart) {
                     color: 'Language',
                     label: null
                 },
-                title: null, // 2 code 2
+                // 2 code 2
                 sort: 'byValue',
                 legend: null
             },
@@ -55,7 +55,7 @@ function anim_1000_1010(chart) {
                     color: 'Language',
                     label: { set: null },
                 },
-                title: null, // 3 code + types 1
+                // 3 code + types 1
                 sort: 'byValue',
                 reverse: false,
             },
@@ -78,7 +78,7 @@ function anim_1000_1010(chart) {
                     color: 'Language',
                     label: { set: ['Line count'] },
                 },
-                title: null, //  '4 code + types 2',
+                //  '4 code + types 2',
                 sort: 'byValue',
                 reverse: false,
             },

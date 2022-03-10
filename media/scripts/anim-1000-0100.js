@@ -8,7 +8,7 @@ function anim_1000_0100(chart) {
                 color: { set: null },
                 label: { set: ['$count'] },
             },
-            title: null, //  '13 File count 2',
+            //  '13 File count 2',
             legend: null
         },
         style: {

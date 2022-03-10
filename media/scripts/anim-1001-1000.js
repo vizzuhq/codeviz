@@ -8,7 +8,7 @@ function anim_1001_1000(chart) {
                 label: { set: null },
                 color: { detach: ['Language'] }
             },
-            title: null, //  '7 code+ Files 1',
+            //  '7 code+ Files 1',
             sort: 'byValue',
             legend: null,
             reverse: false,
@@ -32,7 +32,7 @@ function anim_1001_1000(chart) {
                     color: { set: null },
                     label: { set: null },
                 },
-                title: null, //1 code1
+                //1 code1
                 sort: 'byValue'
             },
             style: {
@@ -56,7 +56,6 @@ function anim_1001_1000(chart) {
                     color: { set: null },
                     label: { set: ['Line count'] },
                 },
-                title: null
             },
             style: {
                 legend: { paddingLeft: '5.789473684' },

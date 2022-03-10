@@ -75,7 +75,7 @@ function anim_0100_0110(chart) {
                     label: { set: ['$count'] },
                     color: { set: ['Language'] }
                 },
-                title: null, //  '10 File count + types 2',
+                //  '10 File count + types 2',
                 sort: 'byValue',
                 legend: null,
                 reverse: true,

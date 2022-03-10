@@ -3,12 +3,12 @@ function anim_1001_1011(chart) {
     return chart.animate({
         config: {
             channels: {
-                y: { set: ['File name', 'Language'], range: { min: '0%', max: '100%' } },
+                y: { set: ['Language', 'File name'], range: { min: '0%', max: '100%' } },
                 x: { set: ['Line count'] },
                 color: { detach: ['Language'] },
                 label: { set: null }
             },
-            title: null, //  '7 code + Files 1',
+            //  '7 code + Files 1',
             sort: 'byValue',
             legend: null,
             reverse: false,
@@ -27,11 +27,11 @@ function anim_1001_1011(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['File name', 'Language'], range: { min: '0%', max: '100%' } },
+                    y: { set: ['Language', 'File name'], range: { min: '0%', max: '100%' } },
                     x: { set: ['Line count'] },
                     color: { set: ['Language'] }
                 },
-                title: null, //  '8 code + types + Files 2',
+                //  '8 code + types + Files 2',
                 sort: 'none',
                 legend: 'color',
                 reverse: true,

@@ -8,7 +8,7 @@ function anim_1011_1010(chart) {
                 color: 'Language',
                 label: null
             },
-            title: null, //  '5 code + types 3'
+            //  '5 code + types 3'
             legend: null,
             reverse: false,
             sort: 'byValue'
@@ -32,7 +32,7 @@ function anim_1011_1010(chart) {
                     color: 'Language',
                     label: { set: ['Line count'] },
                 },
-                title: null, //  '4 code + types 2',
+                //  '4 code + types 2',
                 legend: null,
                 reverse: false,
                 sort: 'byValue'

@@ -32,7 +32,7 @@ function anim_1000_1001(chart) {
                     label: { set: null },
                     color: { detach: ['Language'] }
                 },
-                title: null, //  '7 code+ Files 1',
+                //  '7 code+ Files 1',
                 sort: 'byValue',
                 legend: null,
                 reverse: false,
