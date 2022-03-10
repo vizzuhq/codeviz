@@ -39,9 +39,9 @@ function performAnimation() {
         promise2 = nav_anim_10xx_01xx(navChart, dirFilter.length);
     }
     Promise.all([promise1, promise2]).then(() => {
+        leaveTransientState();
         if (navAnimationType == 'switchToLineCount')
             state_f_restore = false;
-        leaveTransientState();
     });
     updateAnimationVariables();
 }
@@ -182,13 +182,18 @@ function selectRecord(record) {
 }
 
 function navLabelDrawHandler(event) {
+    let tmp = [];
     let label = event.data.text;
-    let tmp = label.split('/');
-    let origWidth = event.renderingContext.measureText(label).width;
+    if (label == dirFilter[dirFilter.length - 1])
+        label =  './';
+    else
+        tmp = label.split('/');
     if (tmp.length >= 2)
         label = tmp[tmp.length - 2];
+    if (label == '.')
+        label = './';
     let textRect = event.renderingContext.measureText(label);
-    let height = textRect.actualBoundingBoxAscent + textRect.actualBoundingBoxDescent;
+    let height = textRect.actualBoundingBoxAscent;
     event.renderingContext.fillText(label,
         event.data.rect.pos.x + event.data.rect.size.x - textRect.width,
         event.data.rect.pos.y + event.data.rect.size.y - height / 2);

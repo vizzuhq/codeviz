@@ -153,7 +153,7 @@ export class VSCCDataPrep {
 
 	generatePathSequences() {
 		for(let i = 0; i < this._pathFragments.length; i++) {
-			let prefix = '';
+			let prefix = './';
 			let currentDepth = 0;
 			var frags = this._pathFragments[i];
 			for(let j = 0; j < frags.length; j++) {
