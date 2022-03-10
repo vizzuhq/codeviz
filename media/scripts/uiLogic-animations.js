@@ -191,6 +191,6 @@ function navLabelDrawHandler(event) {
     let height = textRect.actualBoundingBoxAscent + textRect.actualBoundingBoxDescent;
     event.renderingContext.fillText(label,
         event.data.rect.pos.x + event.data.rect.size.x - textRect.width,
-        event.data.rect.pos.y + (event.data.rect.size.y - height) / 2);
+        event.data.rect.pos.y + event.data.rect.size.y - height / 2);
   	event.preventDefault();
 }
