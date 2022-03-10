@@ -46,12 +46,17 @@ function nav_anim_10xx_filter_fw(chart, dirLevel) {
                     y: { set: [nextDir], range: { min: '0%', max: '100%' } },
                     x: { set: ['Line count'] },
                     label: { set: ['Line count'] }
-                }
+                },
+                title: null
             },
             style: {
                 plot: {
                     marker: { label: { position: 'right' } },
                     xAxis: { label: { angle: 0 } }
+                },
+                title: {
+                    paddingTop: null,
+                    paddingBottom: null
                 }
             }
         },

@@ -9,13 +9,18 @@ function nav_anim_01xx_10xx(chart, dirLevel) {
                 label: { set: ['Line count'] },
             },
             //  '13 File count 2',
-            legend: null
+            legend: null,
+            title: null
         },
         style: {
             plot: {
                 marker: { label: { position: 'right' } },
                 xAxis: { label: { angle: 0 } }
-            }
+            },
+            title: {
+				paddingTop: null,
+				paddingBottom: null
+			}
         }
     },
         { duration: 2 }

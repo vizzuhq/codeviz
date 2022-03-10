@@ -7,8 +7,7 @@ function anim_0100_0110(chart) {
                 x: { set: null },
                 color: { set: null },
                 label: { set: ['$count'] },
-            },
-            title: null, //  '13 File count 2',
+            },//  '13 File count 2',
             legend: null
         },
         style: {
@@ -29,8 +28,7 @@ function anim_0100_0110(chart) {
                     x: { set: null },
                     label: { set: null },
                     color: { set: ['Language'] }
-                },
-                title: null, //  '12 File count 1',
+                },//  '12 File count 1',
                 legend: null
             },
             style: {
@@ -50,8 +48,7 @@ function anim_0100_0110(chart) {
                     y: { set: ['$count', 'File name'], range: { min: '0%', max: '110%' } },
                     x: { set: ['Language'] },
                     color: { set: ['Language'] }
-                },
-                title: null, //  '9 File count + types 1',
+                },//  '9 File count + types 1',
                 sort: 'byValue',
                 legend: null,
                 reverse: true,

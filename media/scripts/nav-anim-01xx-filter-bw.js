@@ -46,9 +46,16 @@ function nav_anim_01xx_filter_bw(chart, dirLevel) {
         config: {
             channels: {
                 y: { set: ['$count'] }, 
-                x: { set: [prevDir] }
+                x: { set: [prevDir] },
+                label: { set: ['$count'] }
             },
-            label: { set: ['$count'] }
+            title: null
+        },
+        style: {
+            title: {
+                paddingTop: null,
+                paddingBottom: null
+            }
         }
     },
     { duration: 0.4 }
