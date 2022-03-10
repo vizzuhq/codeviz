@@ -39,9 +39,9 @@ function performAnimation() {
         promise2 = nav_anim_10xx_01xx(navChart, dirFilter.length);
     }
     Promise.all([promise1, promise2]).then(() => {
+        leaveTransientState();
         if (navAnimationType == 'switchToLineCount')
             state_f_restore = false;
-        leaveTransientState();
     });
     updateAnimationVariables();
 }
