@@ -2,18 +2,20 @@
     font-family: roboto;
     text-align: center;
     padding-top: 10px;
-    font-size: 250%
+    color: rgb(120, 120, 120);
+    font-size: 200%
 }
 
 .info {
     font-family: roboto;
     text-align: center;
-    font-size: 110%
+    color: rgb(130, 130, 130);
+    font-size: 100%
 }
 
 .info-item {
     font-family: roboto;
-    font-size: 110%;
+    font-size: 100%;
 }
 
 .info-value {
