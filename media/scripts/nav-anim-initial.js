@@ -31,7 +31,11 @@ function nav_anim_init(chart) {
                     label: { paddingTop: '0.9em', angle: 0 }, 
                     title: { paddingTop: '2.2em', color: 'rgba(130,130,130,0)' }
                 }
-            }
+            },
+            title: {
+				paddingTop: null,
+				paddingBottom: null
+			}
         }
     },
         {

@@ -8,7 +8,6 @@ function nav_anim_10xx_01xx(chart, dirLevel) {
                 color: { set: null },
                 label: { set: ['$count'] },
             },
-            title: null,
             legend: null
         },
         style: {

@@ -11,7 +11,6 @@ function nav_anim_10xx_filter_fw(chart, dirLevel) {
                 color: { set: null },
                 label: { set: null }
             },
-            title: null,
             legend: null
         },
         style: {
