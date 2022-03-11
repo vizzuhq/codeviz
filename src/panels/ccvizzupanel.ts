@@ -1,6 +1,6 @@
 import { commands, Disposable, Webview, WebviewPanel, window, Uri, ViewColumn, env } from "vscode";
-import { PageGenerator } from "./pageGen";
-import { Summary } from "../data/VSCC_Result";
+import { PageGenerator } from "./pagegen";
+import { Summary } from "../data/vscc_result";
 
 export class CCVizzuPanel {
     public static currentPanel: CCVizzuPanel | undefined;

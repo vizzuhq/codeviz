@@ -1,6 +1,6 @@
 import { Uri } from "vscode";
-import { VSCCDataSource } from "./VSCC_DataSource";
-import { VSCCDataPrep } from "./VSCC_DataPrep";
+import { VSCCDataSource } from "./vscc_datasource";
+import { VSCCDataPrep } from "./vscc_dataprep";
 
 export class Result {
     public code: number = 0;

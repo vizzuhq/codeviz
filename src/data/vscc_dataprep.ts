@@ -1,5 +1,5 @@
 import { Uri } from "vscode";
-import { Result } from "./VSCC_Result";
+import { Result } from "./vscc_result";
 
 interface IStringIndex {
     [key: string]: any

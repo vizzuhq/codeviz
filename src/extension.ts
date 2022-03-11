@@ -1,9 +1,9 @@
 import { commands, window, ExtensionContext, workspace, Uri } from "vscode";
 
-import { CCVizzuPanel } from "./panels/ccVizzuPanel";
-import { VSCCDataSource } from "./data/VSCC_DataSource";
-import { VSCCDataPrep } from "./data/VSCC_DataPrep";
-import { Summary } from "./data/VSCC_Result";
+import { CCVizzuPanel } from "./panels/ccvizzupanel";
+import { VSCCDataSource } from "./data/vscc_datasource";
+import { VSCCDataPrep } from "./data/vscc_dataprep";
+import { Summary } from "./data/vscc_result";
 
 export function activate(context: ExtensionContext) {
     const showCommand = commands.registerCommand("ccVizzu.show", () => {

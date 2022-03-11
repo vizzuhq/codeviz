@@ -3,6 +3,7 @@
   "displayName": "Code Counter Vizzu",
   "description": "Source code statistics with animated vizualization.",
   "version": "0.0.1",
+  "repository": "https://github.com/tczagany/cc-vizzu.git",
   "engines": {
     "vscode": "^1.46.0"
   },

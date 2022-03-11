@@ -1,6 +1,6 @@
 import { Console } from "console";
 import { Disposable, Webview, WebviewPanel, window, Uri, ViewColumn, workspace } from "vscode";
-import { getUri } from "../utilities/getUri";
+import { getUri } from "../utilities/geturi";
 
 export class PageGenerator {
     private _view: Webview;
