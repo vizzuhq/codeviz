@@ -1,5 +1,5 @@
 let inTransientState = false;
-let navAnimationType = 'empty';
+let navAnimationType = 'initial';
 let state_f_disabled = false;
 let state_f_restore = false;
 
@@ -47,6 +47,7 @@ function performAnimation() {
 }
 
 function performFilteringAnimationFw(event) {
+    navAnimationType = 'navFw';
     if (event.data.marker != undefined) {
         if (dirMaxDepth > dirFilter.length) {
             setBackLabelState(false);
@@ -67,6 +68,7 @@ function performFilteringAnimationFw(event) {
 }
 
 function performFilteringAnimationBw() {
+    navAnimationType = 'navBw';
     if (dirFilter.length > 0) {
         enterTransientState();
         if (dirMaxDepth > dirFilter.length) {
