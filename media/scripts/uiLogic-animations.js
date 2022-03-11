@@ -32,17 +32,8 @@ function performAnimation() {
     navAnimationType = selectNavAnimationType();
     let code = 'promise1 = ' + encodeAnimFunctionName() + '(infoChart);';
     eval(code);
-    if (navAnimationType == 'switchToLineCount') {
-        promise2 = nav_anim_01xx_10xx(navChart, dirFilter.length);
-    }
-    else if (navAnimationType == 'switchToFileCount') {
-        promise2 = nav_anim_10xx_01xx(navChart, dirFilter.length);
-    }
-    Promise.all([promise1, promise2]).then(() => {
-        leaveTransientState();
-        if (navAnimationType == 'switchToLineCount')
-            state_f_restore = false;
-    });
+    //paralellAnim(promise1);
+    serialAnim(promise1);
     updateAnimationVariables();
 }
 
@@ -200,4 +191,37 @@ function navLabelDrawHandler(event) {
         event.data.rect.pos.x + event.data.rect.size.x - textRect.width,
         event.data.rect.pos.y + event.data.rect.size.y - height / 2);
   	event.preventDefault();
+}
+
+function paralellAnim(promise1) {
+    let promise2 = Promise.resolve();
+    if (navAnimationType == 'switchToLineCount') {
+        promise2 = nav_anim_01xx_10xx(navChart, dirFilter.length);
+    }
+    else if (navAnimationType == 'switchToFileCount') {
+        promise2 = nav_anim_10xx_01xx(navChart, dirFilter.length);
+    }
+    Promise.all([promise1, promise2]).then(() => {
+        leaveTransientState();
+        if (navAnimationType == 'switchToLineCount')
+            state_f_restore = false;
+    });
+}
+
+function serialAnim(promise1) {
+    Promise.all([promise1]).then(() => {
+        if (navAnimationType == 'switchToLineCount') {
+            nav_anim_01xx_10xx(navChart, dirFilter.length).then(() => {
+                leaveTransientState();
+                state_f_restore = false;
+            });
+        }
+        else if (navAnimationType == 'switchToFileCount') {
+            nav_anim_10xx_01xx(navChart, dirFilter.length).then(() => {
+                leaveTransientState();
+            });
+        }
+        else
+            leaveTransientState();
+    });
 }
