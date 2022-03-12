@@ -20,7 +20,7 @@ function nav_anim_01xx_filter_fw(chart, dirLevel) {
             }
         }
     },
-        { duration: 0.4 }
+        { duration: 0.3 }
     )
 
         .then(chart => chart.animate({
@@ -37,7 +37,7 @@ function nav_anim_01xx_filter_fw(chart, dirLevel) {
                 }
             }
         },
-            { duration: 0.4 }
+            { duration: 0.6 }
         ))
 
         .then(chart => chart.animate({
@@ -52,7 +52,7 @@ function nav_anim_01xx_filter_fw(chart, dirLevel) {
             style: {
                 plot: {
                     marker: { label: { position: 'top' } },
-                    xAxis: { label: { angle: -0.7, fontSize: '0.8em' } }
+                    xAxis: { label: { angle: -0.7, fontSize: '0.6em' } }
                 },
                 title: {
                     paddingTop: null,
@@ -60,6 +60,6 @@ function nav_anim_01xx_filter_fw(chart, dirLevel) {
                 }
             }
         },
-            { duration: 0.4 }
+            { duration: 0.3 }
         ));
 }

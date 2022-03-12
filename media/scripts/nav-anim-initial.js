@@ -39,7 +39,7 @@ function nav_anim_init(chart) {
         }
     },
         {
-            duration: 0.2
+            duration: 0.1
         })
 
         .then(chart => {

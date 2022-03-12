@@ -11,7 +11,7 @@
         <title>Code Counter Vizzu</title>
     </head>
     <body>
-        <h1 class="title" id="label_title">Code Counter Vizzu</h1>
+        <h1 class="title" id="label_title">Codeviz</h1>
         <p class="info">
             <span id="label_date">date placeholder</span>
             &nbsp;&nbsp;-&nbsp;&nbsp;
@@ -30,19 +30,19 @@
                     <vscode-option id="idLineCount">Line count</vscode-option>
                     <vscode-option id="idFileCount">File count</vscode-option>
                 </vscode-dropdown>
-                <p id="idBackLabelContainer"><button class="click-label" id="idBackLabel" style="float: left;" onclick="onLabelBack()">Click on folder below!</button></p>
+                <p id="idBackLabelContainer"><button class="click-label" id="idBackLabel" style="float: left;" onclick="onLabelBack()">Click on a folder below!</button></p>
             </div>
             <div style="margin-right: 10%; display: grid; grid-template-rows: auto auto; justify-items: end;">
                 <div>
                     <vscode-checkbox id="idChkBoxLang" onchange="onCheckboxLanguages()" checked>Languages</vscode-checkbox>
-                    <vscode-checkbox id="idChkBoxFiles" onchange="onCheckboxFiles()">Show files</vscode-checkbox>
+                    <vscode-checkbox id="idChkBoxFiles" onchange="onCheckboxFiles()">Files</vscode-checkbox>
                 </div>
                 <!--<p><button class="click-label" id="idShowFiles" style="float: right; cursor: default">Click on a language to see the file list!</button></p>-->
             </div>
         </div>
         <div class="vizzu-div">
             <div style="aspect-ratio: 1/1; width: 100%; height: 60vh;" id="navVizzu"></div>
-            <div style="aspect-ratio: 2/1; width: 100%; height: 60vh;" id="infoVizzu"></div>
+            <div style="aspect-ratio: 1/1; width: 100%; height: 60vh;" id="infoVizzu"></div>
         </div>
         <div class="control-div">
             <img style="cursor: pointer;" src="${logo}" width="100px" onclick="onVizzuLogo()">

@@ -11,7 +11,7 @@ function nav_anim_10xx_filter_bw(chart, dirLevel) {
                 label: { set: null }
             }
         }},
-        { duration: 0.4 }
+        { duration: 0.3 }
     )
 
     .then(chart => chart.animate({
@@ -22,7 +22,7 @@ function nav_anim_10xx_filter_bw(chart, dirLevel) {
             }
         }
     },
-    { duration: 0.4 }
+    { duration: 1 }
     ))
 
     .then(chart => chart.animate({
@@ -38,7 +38,7 @@ function nav_anim_10xx_filter_bw(chart, dirLevel) {
             }
         }
     },
-    { duration: 0.4 }
+    { duration: 0.3 }
     ))
 
     .then(chart => chart.animate({
@@ -57,6 +57,6 @@ function nav_anim_10xx_filter_bw(chart, dirLevel) {
             }
         }
     },
-    { duration: 0.4 }
+    { duration: 0.3 }
     ));
 }

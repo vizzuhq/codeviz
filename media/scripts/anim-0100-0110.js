@@ -45,7 +45,7 @@ function anim_0100_0110(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count', 'File name'], range: { min: '0%', max: '110%' } },
+                    y: { set: ['$count', 'File name'], range: { min: '0%', max: '100%' } },
                     x: { set: ['Language'] },
                     color: { set: ['Language'] }
                 },//  '9 File count + types 1',
@@ -67,7 +67,7 @@ function anim_0100_0110(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count'], range: { min: '0%', max: '110%' } },
+                    y: { set: ['$count'], range: { min: '0%', max: '100%' } },
                     x: { set: ['Language'] },
                     label: { set: ['$count'] },
                     color: { set: ['Language'] }

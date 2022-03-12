@@ -96,7 +96,7 @@ function setBackLabelState(disabled) {
     if (disabled) {
         container.innerHTML = `
             <button class="click-label" id="idBackLabel" onclick="onLabelBack()">
-            Click on folder below to open!
+            Click on a folder below!
             </button>`;
         const ctrl = (document.getElementById('idBackLabel'));
         ctrl.disabled = disabled;
@@ -104,7 +104,7 @@ function setBackLabelState(disabled) {
     else {
         container.innerHTML = `
             <vscode-link id="idBackLabel" onclick="onLabelBack()">
-            Click here to go back!
+            Go back!
             </vscode-link>`;
         const ctrl = (document.getElementById('idBackLabel'));
         ctrl.disabled = disabled;
