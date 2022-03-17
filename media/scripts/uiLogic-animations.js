@@ -30,9 +30,10 @@ function performAnimation() {
     let promise1 = Promise.resolve();
     let promise2 = Promise.resolve();
     navAnimationType = selectNavAnimationType();
-    let code = 'promise1 = ' + encodeAnimFunctionName() + '(infoChart);';
-    eval(code);
-    //paralellAnim(promise1);
+ //   let code = 'promise1 = ' + encodeAnimFunctionName() + '(infoChart);';
+ //   eval(code);
+    promise1=window[encodeAnimFunctionName()](infoChart);
+ //   paralellAnim(promise1);
     serialAnim(promise1);
     updateAnimationVariables();
 }
