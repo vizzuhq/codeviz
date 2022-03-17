@@ -6,7 +6,7 @@ function nav_anim_01xx_filter_fw(chart, dirLevel) {
     return chart.animate({
         config: {
             channels: {
-                y: { set: ['$count', nextDir], range: { min: '0%', max: '100%' } },
+                y: { set: ['$count', nextDir] },
                 x: { set: null },
                 color: { set: null },
                 label: { set: null }
@@ -26,7 +26,7 @@ function nav_anim_01xx_filter_fw(chart, dirLevel) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count'], range: { min: '0%', max: '100%' } },
+                    y: { set: ['$count'] },
                     x: { set: [nextDir] }
                 }
             },
@@ -43,7 +43,7 @@ function nav_anim_01xx_filter_fw(chart, dirLevel) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count'], range: { min: '0%', max: '100%' } },
+                    y: { set: ['$count'] },
                     x: { set: [nextDir] },
                     label: { set: ['$count'] }
                 },

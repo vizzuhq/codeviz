@@ -3,7 +3,7 @@ function anim_0100_1001(chart) {
     return chart.animate({
         config: {
             channels: {
-                y: { set: ['$count'], range: { min: '0%', max: '100%' } },
+                y: { set: ['$count'] },
                 x: { set: null },
                 color: { set: null },
                 label: { set: ['$count'] },
@@ -25,7 +25,7 @@ function anim_0100_1001(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count', 'Language', 'File name'], range: { min: '0%', max: '100%' } },
+                    y: { set: ['$count', 'Language', 'File name'] },
                     x: { set: null },
                     color: { detach: ['Language'] },
                     label: { set: null }
@@ -38,7 +38,7 @@ function anim_0100_1001(chart) {
             style: {
                 plot: {
                     paddingLeft: '9em',
-                    yAxis: { label: { fontSize: 0 } },
+                    yAxis: { label: { color:'#12345600' } },
                     xAxis: { label: { angle: 0 } }
                 }
             }
@@ -49,7 +49,7 @@ function anim_0100_1001(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['Language', 'File name'], range: { min: '0%', max: '100%' } },
+                    y: { set: ['Language', 'File name'] },
                     x: { set: ['Line count'] },
                     color: { detach: ['Language'] },
                     label: { set: null }
@@ -62,7 +62,7 @@ function anim_0100_1001(chart) {
             style: {
                 plot: {
                     paddingLeft: '9em',
-                    yAxis: { label: { fontSize: 0 } },
+                    yAxis: { label: { color:'#12345600' } },
                     xAxis: { label: { angle: 0 } }
                 }
             }

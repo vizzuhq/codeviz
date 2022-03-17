@@ -3,7 +3,7 @@ function anim_1010_0110(chart) {
     return chart.animate({
         config: {
             channels: {
-                y: { set: ['Language'], range: { min: '0%', max: '100%' } },
+                y: { set: ['Language'] },
                 x: { set: ['Line count'] },
                 color: 'Language',
                 label: { set: ['Line count'] },
@@ -27,19 +27,15 @@ function anim_1010_0110(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['Language'], range: { min: '0%', max: '100%' } },
                     x: { set: ['Line count', 'File name'] },
-                    color: 'Language',
                     label: null
                 },
                 //  '5 code + types 3'
-                legend: null,
-                sort: 'byValue',
             },
             style: {
                 plot: {
                     paddingLeft: '9em',
-                    yAxis: { label: { fontSize: '0em', paddingRight: '1.2em' } },
+                    yAxis: { label: { color:'#12345600', paddingRight: '1.2em' } },
                     xAxis: { label: { angle: 0 } }
                 }
             }
@@ -50,13 +46,10 @@ function anim_1010_0110(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count', 'File name'], range: { min: '0%', max: '100%' } },
-                    x: { set: ['Language'] },
-                    color: { set: ['Language'] }
+                    y: { set: ['$count', 'File name'] },
+                    x: { set: ['Language'] }
                 },
                 //  '9 File count + types 1',
-                sort: 'byValue',
-                legend: null,
                 reverse: true,
             },
             style: {
@@ -73,15 +66,10 @@ function anim_1010_0110(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count'], range: { min: '0%', max: '100%' } },
-                    x: { set: ['Language'] },
-                    color: { set: ['Language'] },
+                    y: { set: ['$count'] },
                     label: { set: ['$count'] },
                 },
                 //  '10 File count + types 2',
-                sort: 'byValue',
-                legend: null,
-                reverse: true,
             },
             style: {
                 plot: {

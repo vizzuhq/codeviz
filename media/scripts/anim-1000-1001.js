@@ -3,8 +3,8 @@ function anim_1000_1001(chart) {
     return chart.animate({
         config: {
             channels: {
-                y: { set: null, range: { min: '0%', max: '100%' } },
-                x: { set: ['Line count', 'File name'], range: { min: '0%', max: '100%' } },
+                y: { set: null },
+                x: { set: ['Line count', 'File name'] },
                 color: { set: null },
                 label: { set: null },
             },
@@ -16,7 +16,7 @@ function anim_1000_1001(chart) {
             plot: {
                 paddingLeft: '9em',
                 marker: { label: { position: 'center' } },
-                yAxis: { label: { fontSize: 0, paddingRight: '1.2em' } },
+                yAxis: { label: { color:'#12345600', paddingRight: '1.2em' } },
                 xAxis: { label: { angle: 0 } }
             }
         }
@@ -27,7 +27,7 @@ function anim_1000_1001(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['File name'], range: { min: '0%', max: '100%' } },
+                    y: { set: ['File name'] },
                     x: { set: ['Line count'] },
                     label: { set: null },
                     color: { detach: ['Language'] }
@@ -40,7 +40,7 @@ function anim_1000_1001(chart) {
             style: {
                 plot: {
                     paddingLeft: '9em',
-                    yAxis: { label: { fontSize: 0 } },
+                    yAxis: { label: { color:'#12345600' } },
                     xAxis: { label: { angle: 0 } }
                 }
             }

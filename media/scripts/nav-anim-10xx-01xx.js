@@ -3,7 +3,7 @@ function nav_anim_10xx_01xx(chart, dirLevel) {
     return chart.animate({
         config: {
             channels: {
-                y: { set: ['$count'], range: { min: '0%', max: '100%' } },
+                y: { set: ['$count'] },
                 x: { set: ['Folder level ' + dirLevel] },
                 color: { set: null },
                 label: { set: ['$count'] },

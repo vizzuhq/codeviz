@@ -3,7 +3,7 @@ function anim_1010_1000(chart) {
     return chart.animate({
         config: {
             channels: {
-                y: { set: ['Language'], range: { min: '0%', max: '100%' } },
+                y: { set: ['Language'] },
                 x: { set: ['Line count'] },
                 color: 'Language',
                 label: { set: ['Line count'] },
@@ -27,7 +27,7 @@ function anim_1010_1000(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['Language'], range: { min: '0%', max: '100%' } },
+                    y: { set: ['Language'] },
                     x: { set: ['Line count'] },
                     color: 'Language',
                     label: { set: null },
@@ -50,8 +50,8 @@ function anim_1010_1000(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: null, range: { min: '0%', max: '100%' } },
-                    x: { set: ['Language', 'Line count'], range: { min: '0%', max: '100%' } },
+                    y: { set: null },
+                    x: { set: ['Language', 'Line count'] },
                     color: 'Language',
                     label: null
                 },
@@ -74,8 +74,8 @@ function anim_1010_1000(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: null, range: { min: '0%', max: '100%' } },
-                    x: { set: ['Line count'], range: { min: '0%', max: '100%' } },
+                    y: { set: null },
+                    x: { set: ['Line count'] },
                     color: { set: null },
                     label: { set: ['Line count'] },
                 },

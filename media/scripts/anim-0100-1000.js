@@ -3,8 +3,8 @@ function anim_0100_1000(chart) {
     return chart.animate({
         config: {
             channels: {
-                y: { set: null, range: { min: '0%', max: '100%' } },
-                x: { set: ['Line count'], range: { min: '0%', max: '100%' } },
+                y: { set: null },
+                x: { set: ['Line count'] },
                 color: { set: null },
                 label: { set: ['Line count'] },
             },

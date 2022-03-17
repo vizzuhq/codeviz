@@ -3,7 +3,7 @@ function anim_1000_0100(chart) {
     return chart.animate({
         config: {
             channels: {
-                y: { set: ['$count'], range: { min: '0%', max: '100%' } },
+                y: { set: ['$count'] },
                 x: { set: null },
                 color: { set: null },
                 label: { set: ['$count'] },

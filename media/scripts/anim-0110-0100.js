@@ -3,7 +3,7 @@ function anim_0110_0100(chart) {
     return chart.animate({
         config: {
             channels: {
-                y: { set: ['$count'], range: { min: '0%', max: '100%' } },
+                y: { set: ['$count'] },
                 x: { set: ['Language'] },
                 label: { set: ['$count'] },
                 color: { set: ['Language'] }
@@ -27,7 +27,7 @@ function anim_0110_0100(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count', 'File name'], range: { min: '0%', max: '100%' } },
+                    y: { set: ['$count', 'File name'] },
                     x: { set: ['Language'] },
                     color: { set: ['Language'] },
                     label: { set: null },
@@ -51,7 +51,7 @@ function anim_0110_0100(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count', 'Language', 'File name'], range: { min: '0%', max: '100%' } },
+                    y: { set: ['$count', 'Language', 'File name'] },
                     x: { set: null },
                     label: { set: null },
                     color: { set: ['Language'] }
@@ -73,7 +73,7 @@ function anim_0110_0100(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count'], range: { min: '0%', max: '100%' } },
+                    y: { set: ['$count'] },
                     x: { set: null },
                     color: { set: null },
                     label: { set: ['$count'] },
