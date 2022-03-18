@@ -32,11 +32,6 @@ function nav_anim_01xx_filter_bw(chart, dirLevel) {
                 y: { set: ['$count'] }, 
                 x: { set: prevDir }
             }
-        },
-        style: {
-            plot: {
-                xAxis: { label: { fontSize: '1em' } }
-            }
         }
     },
     { duration: 0.3 }

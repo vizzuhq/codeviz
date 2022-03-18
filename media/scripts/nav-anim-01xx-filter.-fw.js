@@ -33,7 +33,7 @@ function nav_anim_01xx_filter_fw(chart, dirLevel) {
             style: {
                 plot: {
                     marker: { label: { position: 'top' } },
-                    xAxis: { label: { angle: -0.7, fontSize: '0.7em' } }
+                    xAxis: { label: { angle: -0.7 } }
                 }
             }
         },
@@ -52,7 +52,7 @@ function nav_anim_01xx_filter_fw(chart, dirLevel) {
             style: {
                 plot: {
                     marker: { label: { position: 'top' } },
-                    xAxis: { label: { angle: -0.7, fontSize: '0.6em' } }
+                    xAxis: { label: { angle: -0.7 } }
                 },
                 title: {
                     paddingTop: null,
