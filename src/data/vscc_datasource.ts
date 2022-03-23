@@ -16,10 +16,10 @@ export class VSCCDataSource {
 		let result: {date: String, path: String}[] = [];
         let vsccFolder = Uri.joinPath(wsUri, '.VSCodeCounter');
 		const fs = require('fs');
-		const dirPath = fs.readdirSync(this._dataFolderUri.path);
+		const dirPath = fs.readdirSync(this._dataFolderUri.fsPath);
 		dirPath.map((item: String) => {
             let path = Uri.joinPath(this._dataFolderUri, item.valueOf());
-            result.push({date: item, path: path.path});
+            result.push({date: item, path: path.fsPath});
 		});
         if (result.length) {
             result.sort();
@@ -34,7 +34,7 @@ export class VSCCDataSource {
         if (this._dataFolderUri == undefined)
             return;
         const fs = require('fs');
-        let path = Uri.joinPath(this._dataFolderUri, "results.json").path;
+        let path = Uri.joinPath(this._dataFolderUri, "results.json").fsPath;
         const text = fs.readFileSync(path, {encoding:'utf8', flag:'r'});
         this.data = JSON.parse(text);
     }
