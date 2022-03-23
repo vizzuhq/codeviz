@@ -1,5 +1,5 @@
 {
-  "name": "cc-vizzu",
+  "name": "CodeViz",
   "displayName": "Code Counter Vizzu",
   "description": "Source code statistics with animated vizualization.",
   "version": "0.0.1",
@@ -11,7 +11,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:ccVizzu.show"
+    "onCommand:CodeViz.show"
   ],
   "extensionDependencies": [
     "uctakeoff.vscode-counter"
@@ -21,15 +21,15 @@
     "menus": {
       "view/title": [
         {
-          "command": "ccVizzu.show",
+          "command": "CodeViz.show",
           "when": "true"
         }
       ]
     },
     "commands": [
       {
-        "command": "ccVizzu.show",
-        "title": "ccVizzu: Show statistics"
+        "command": "CodeViz.show",
+        "title": "CodeViz: Show statistics"
       }
     ]
   },
@@ -53,7 +53,7 @@
     "vscode-test": "^1.5.0"
   },
   "dependencies": {
-    "vizzu": "^0.4.3",
+    "vizzu": "^0.4.7",
     "@vscode/webview-ui-toolkit": "^0.9.1"
   }
 }

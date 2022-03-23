@@ -28,13 +28,10 @@ function performAnimation() {
     if (!enterTransientState())
         return;
     let promise1 = Promise.resolve();
-    let promise2 = Promise.resolve();
     navAnimationType = selectNavAnimationType();
- //   let code = 'promise1 = ' + encodeAnimFunctionName() + '(infoChart);';
- //   eval(code);
-    promise1=window[encodeAnimFunctionName()](infoChart);
- //   paralellAnim(promise1);
-    serialAnim(promise1);
+    promise1 = window[encodeAnimFunctionName()](infoChart);
+    paralellAnim(promise1);
+    //serialAnim(promise1);
     updateAnimationVariables();
 }
 

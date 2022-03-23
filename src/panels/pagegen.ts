@@ -37,11 +37,11 @@ export class PageGenerator {
         return this._content.valueOf();
     }
 
-	private _collectScripts(dir: String) {
+	private _collectScripts(root: String) {
 		let result: String = '';
 		const fs = require('fs');
-		const dirPath = fs.readdirSync(dir);
-		dirPath.map((item: String) => {
+		const directories = fs.readdirSync(root);
+		directories.map((item: String) => {
 			let path = Uri.joinPath(this._pathOnDisk, 'scripts');
 			path = Uri.joinPath(path, item.toString());
 			const scriptUri = path.with({ 'scheme': 'vscode-resource' });
