@@ -18,6 +18,27 @@ let dirMaxDepth = 0;
 let databaseFileCount = 0;
 let paralellAnimLimit = 450;
 
+function busyPromise(fn) {
+    let _resolve;
+    let timeout;
+    let promise = new Promise((resolve, reject) => {
+        _resolve = resolve;
+        timeout = setTimeout(() => {}, 10000);
+    });
+    return {
+        promise,
+        exec(ready) {
+            fn().then(() => {
+                if (ready != undefined)
+                    ready();
+                clearTimeout(timeout);
+                timeout = null;
+                _resolve();
+            });
+        }
+    };
+};
+
 function performInitAnimation(info) {
     if (!enterTransientState())
         return;
@@ -138,15 +159,29 @@ function updateAnimationVariables() {
     last_state_fc = state_fc;
 }
 
+function applyFilter() {
+    let filter1 = busyPromise(() => {
+        return nav_anim_record_filter(infoChart, (record) => selectRecord(record));
+    });
+    let filter2 = busyPromise(() => {
+        return nav_anim_record_filter(navChart, (record) => selectRecord(record));
+    });
+    if (databaseFileCount < paralellAnimLimit) {
+        filter1.exec();
+        filter2.exec();
+    }
+    else {
+        filter1.exec(() => {
+            filter2.exec();
+        });
+    }
+    return [ filter1, filter2 ];
+}
+
 function applyFilterFw() {
     enterTransientState();
-    let promise1 = Promise.resolve();
-    let promise2 = Promise.resolve();
-    if (databaseFileCount < paralellAnimLimit)
-        paralellFilterAnim(promise1, promise2);
-    else
-        serialFilterAnim(promise1, promise2);
-    Promise.all([promise1, promise2]).then(() => {
+    let promises = applyFilter();
+    Promise.all([promises[0].promise, promises[1].promise]).then(() => {
         if (dirMaxDepth > dirFilter.length) {
             if (state_lc)
                 nav_anim_10xx_filter_fw(navChart, dirFilter.length).then(() => leaveTransientState());
@@ -162,13 +197,8 @@ function applyFilterBw() {
     dirFilter.pop();
     if (dirFilter == 0)
         setBackLabelState(true);
-    let promise1 = Promise.resolve();
-    let promise2 = Promise.resolve();
-    if (databaseFileCount < paralellAnimLimit)
-        paralellFilterAnim(promise1, promise2);
-    else
-        serialFilterAnim(promise1, promise2);
-    Promise.all([promise1, promise2]).then(() => {
+    let promises = applyFilter();
+    Promise.all([promises[0].promise, promises[1].promise]).then(() => {
         leaveTransientState();
         let filterStr = dirFilter[dirFilter.length - 1];
         if (filterStr != undefined)
@@ -184,17 +214,6 @@ function selectRecord(record) {
             return false;
     }
     return true;
-}
-
-function paralellFilterAnim(promise1, promise2) {
-    promise1 = nav_anim_record_filter(infoChart, (record) => selectRecord(record));
-    promise2 = nav_anim_record_filter(navChart, (record) => selectRecord(record));
-}
-
-function serialFilterAnim(promise1, promise2) {
-    nav_anim_record_filter(infoChart, (record) => selectRecord(record)).then(() => {
-        promise2 = nav_anim_record_filter(navChart, (record) => selectRecord(record));
-    });
 }
 
 function navLabelDrawHandler(event) {
