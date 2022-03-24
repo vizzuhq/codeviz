@@ -8,7 +8,7 @@ function nav_anim_01xx_filter_bw(chart, dirLevel) {
             channels: {
                 y: { set: ['$count'], range: {min: '0%', max: '100%' } },
                 x: { set: [crDir] },
-                label: { set: null }
+                label: { set: ['$count'] }
             },
             legend: null
         }},
