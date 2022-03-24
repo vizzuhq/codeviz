@@ -23,7 +23,7 @@ function nav_anim_init(chart) {
                 paddingLeft: '6em',
                 paddingRight: '2em',
                 marker: { 
-                    label: { fontWeight: 'bold', maxFractionDigits: '0', fontSize:'0.8em' }
+                    label: { fontWeight: 'bold', maxFractionDigits: '0', fontSize:'0.9em' }
                 },
                 yAxis: {
                     color: 'rgba(130,130,130,0.2)',
