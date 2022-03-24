@@ -15,7 +15,7 @@ function anim_1011_0110(chart) {
         style: {
             plot: {
                 paddingLeft: '0em',
-                yAxis: { label: { color:'#12345600' } },
+//                yAxis: { label: { color:null } },
                 xAxis: { label: { angle: 0 } }
             }
         }
@@ -63,7 +63,8 @@ function anim_1011_0110(chart) {
                 plot: {
                     paddingLeft: '9em',
                     marker: { label: { position: 'top' } },
-                    xAxis: { label: { angle: -0.7 } }
+                    xAxis: { label: { angle: -0.7 } },                
+                    yAxis: { label: { color:null } }
                 }
             }
         },
