@@ -36,9 +36,6 @@ function onLabelBack() {
     performFilteringAnimationBw();
 }
 
-function onLabelShowFiles() {
-}
-
 function onCheckboxLanguages() {
     readAnimationVariables();
     performAnimation();
@@ -47,9 +44,6 @@ function onCheckboxLanguages() {
 function onCheckboxFiles() {
     readAnimationVariables();
     performAnimation();
-}
-
-function onCheckboxSelectFolder() {
 }
 
 function onVizzuLogo() {

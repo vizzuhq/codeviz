@@ -40,7 +40,7 @@ export class CCVizzuPanel {
         }
         else {
             const panel = window.createWebviewPanel(
-                "ccvizzu", "Code Counter Vizzu",
+                "CodeViz", "CodeViz",
                 ViewColumn.One, {
                     enableScripts: true,
             });

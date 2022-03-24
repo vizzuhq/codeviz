@@ -35,6 +35,8 @@ function importVizzuLibAndCreateCharts() {
             vscode.postMessage({ command: 'showerror', text: 'Vizzu library import failure: ' + e });
         });
     }
+    setBackLabelState(false);
+    setBackLabelState(true);
 }
 
 async function initializingVizzuCharts(data) {

@@ -22,7 +22,7 @@ export class PageGenerator {
         const htmlPathOnDisk = Uri.joinPath(this._extensionUri, 'media', 'main.html');
         let doc = await workspace.openTextDocument(htmlPathOnDisk);
         this._content = doc.getText();
-        const scripts = this._collectScripts(Uri.joinPath(this._pathOnDisk, 'scripts').path);
+        const scripts = this._collectScripts(Uri.joinPath(this._pathOnDisk, 'scripts').fsPath);
         const stylesControlPath = Uri.joinPath(this._extensionUri, 'media', 'main.css');
         const styleMain = this._view.asWebviewUri(stylesControlPath);
         const logoPath = Uri.joinPath(this._extensionUri, 'assets', 'vizzu_logo.png');
@@ -37,11 +37,11 @@ export class PageGenerator {
         return this._content.valueOf();
     }
 
-	private _collectScripts(dir: String) {
+	private _collectScripts(root: String) {
 		let result: String = '';
 		const fs = require('fs');
-		const dirPath = fs.readdirSync(dir);
-		dirPath.map((item: String) => {
+		const directories = fs.readdirSync(root);
+		directories.map((item: String) => {
 			let path = Uri.joinPath(this._pathOnDisk, 'scripts');
 			path = Uri.joinPath(path, item.toString());
 			const scriptUri = path.with({ 'scheme': 'vscode-resource' });
