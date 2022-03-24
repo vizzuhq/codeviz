@@ -8,7 +8,7 @@ function nav_anim_10xx_filter_bw(chart, dirLevel) {
             channels: {
                 y: { set: [crDir] }, 
                 x: { set: ['Line count'] },
-                label: { set: null }
+                label: { set: ['Line count'] }
             }
         }},
         { duration: 0.3 }

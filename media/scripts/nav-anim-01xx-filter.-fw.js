@@ -9,7 +9,7 @@ function nav_anim_01xx_filter_fw(chart, dirLevel) {
                 y: { set: ['$count', nextDir] },
                 x: { set: null },
                 color: { set: null },
-                label: { set: null }
+                label: { set: ['$count'] }
             },
             legend: null
         },
