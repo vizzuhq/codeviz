@@ -158,7 +158,8 @@ function applyFilterBw() {
     Promise.all([promise1, promise2]).then(() => {
         leaveTransientState();
         let filterStr = dirFilter[dirFilter.length - 1];
-        vscode.postMessage({ command: 'showinexplorer', text: filterStr });
+        if (filterStr != undefined)
+            vscode.postMessage({ command: 'showinexplorer', text: filterStr });
     });
 }
 

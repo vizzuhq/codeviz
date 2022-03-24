@@ -1,5 +1,3 @@
-let backLabelDisabled = true;
-
 function allDescendants(node, fn) {
     if (node == undefined || fn == undefined)
         return;
@@ -13,6 +11,9 @@ function allDescendants(node, fn) {
 function disableControls() {
     let ctrlDiv = document.getElementById("idControlDiv");
     allDescendants(ctrlDiv, function(child) {
+        if (child.id == 'idBackLabel') {
+            child.onclick = undefined;
+        }
         child.disabled = true;
     });
 }
@@ -21,7 +22,7 @@ function enableControls() {
     let ctrlDiv = document.getElementById("idControlDiv");
     allDescendants(ctrlDiv, function(child) {
         if (child.id == 'idBackLabel') {
-            child.disabled = backLabelDisabled;
+            child.onclick = onLabelBack;
         }
         child.disabled = false;
     });
@@ -97,11 +98,8 @@ function setBackLabelState(disabled) {
     }
     else {
         container.innerHTML = `
-            <vscode-link id="idBackLabel" onclick="onLabelBack()">
+            <vscode-link id="idBackLabel">
             Go back!
             </vscode-link>`;
-        const ctrl = (document.getElementById('idBackLabel'));
-        ctrl.disabled = disabled;
     }
-    backLabelDisabled = disabled;
 }
