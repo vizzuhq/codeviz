@@ -8,7 +8,7 @@ let infoChart = undefined;
         switch (message.command) {
             case 'refresh-data-table':
                 await initializingVizzuCharts(message.dataTable);
-                performInitAnimation();
+                performInitAnimation(message.dataSummary);
                 updateInfoLabelsContent(message.dataSummary);
                 dirMaxDepth = message.dataSummary.depth;
             break;
