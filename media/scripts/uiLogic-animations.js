@@ -16,7 +16,7 @@ let last_state_fc = false;
 let dirFilter = [];
 let dirMaxDepth = 0;
 let databaseFileCount = 0;
-let paralellAnimLimit = 4500;
+let paralellAnimLimit = 1500;
 let currentDirectory = 'workspace';
 
 function busyPromise(fn) {
