@@ -90,16 +90,13 @@ function setBackLabelState(disabled) {
     const container = (document.getElementById('idBackLabelContainer'));
     if (disabled) {
         container.innerHTML = `
-            <button class="click-label" id="idBackLabel" onclick="onLabelBack()">
-            Click on a folder below!
-            </button>`;
-        const ctrl = (document.getElementById('idBackLabel'));
-        ctrl.disabled = disabled;
+            Click on a folder below! &nbsp; &nbsp;`;
     }
     else {
         container.innerHTML = `
             <vscode-link id="idBackLabel">
             Go back!
-            </vscode-link>`;
+            </vscode-link>
+            &nbsp; &nbsp; Folder: ${currentDirectory}`;
     }
 }

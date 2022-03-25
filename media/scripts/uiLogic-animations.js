@@ -17,6 +17,7 @@ let dirFilter = [];
 let dirMaxDepth = 0;
 let databaseFileCount = 0;
 let paralellAnimLimit = 4500;
+let currentDirectory = 'workspace';
 
 function busyPromise(fn) {
     let _resolve;
@@ -63,10 +64,11 @@ function performFilteringAnimationFw(event) {
     navAnimationType = 'navFw';
     if (event.data.marker != undefined) {
         if (dirMaxDepth > dirFilter.length) {
-            setBackLabelState(false);
             let level = dirFilter.length;
             let levelStr = 'Folder level ' + level.toString();
             let filterStr = event.data.marker.categories[levelStr];
+            currentDirectory = 'workspace' + filterStr.substring(1);
+            setBackLabelState(false);
             if (dirFilter[dirFilter.length - 1] == filterStr)
                 vscode.postMessage({ command: 'showinfo', text: 'No more folder under this level!' });
             else {    
@@ -193,15 +195,21 @@ function applyFilterFw() {
 }
 
 function applyFilterBw() {
+    let filterStr = '';
     dirFilter.pop();
     if (dirFilter == 0)
         setBackLabelState(true);
+    else {
+        filterStr = dirFilter[dirFilter.length - 1];
+        currentDirectory = 'workspace' + filterStr.substring(1);
+        setBackLabelState(false);
+    }
     let promises = applyFilter();
     Promise.all([promises[0].promise, promises[1].promise]).then(() => {
         leaveTransientState();
-        let filterStr = dirFilter[dirFilter.length - 1];
-        if (filterStr != undefined)
+        if (filterStr != '') {
             vscode.postMessage({ command: 'showinexplorer', text: filterStr });
+        }
     });
 }
 
