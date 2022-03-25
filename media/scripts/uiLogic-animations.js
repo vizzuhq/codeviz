@@ -16,7 +16,7 @@ let last_state_fc = false;
 let dirFilter = [];
 let dirMaxDepth = 0;
 let databaseFileCount = 0;
-let paralellAnimLimit = 450;
+let paralellAnimLimit = 4500;
 
 function busyPromise(fn) {
     let _resolve;
@@ -51,13 +51,11 @@ function performInitAnimation(info) {
 function performAnimation() {
     if (!enterTransientState())
         return;
-    let promise1 = Promise.resolve();
     navAnimationType = selectNavAnimationType();
-    promise1 = window[encodeAnimFunctionName()](infoChart);
     if (databaseFileCount < paralellAnimLimit)
-        paralellAnim(promise1);
+        paralellAnim();
     else
-        serialAnim(promise1);
+        serialAnim();
     updateAnimationVariables();
 }
 
@@ -166,7 +164,8 @@ function applyFilter() {
     let filter2 = busyPromise(() => {
         return nav_anim_record_filter(navChart, (record) => selectRecord(record));
     });
-    if (databaseFileCount < paralellAnimLimit) {
+    // always paralell
+    if (true || databaseFileCount < paralellAnimLimit) {
         filter1.exec();
         filter2.exec();
     }
@@ -235,35 +234,42 @@ function navLabelDrawHandler(event) {
   	event.preventDefault();
 }
 
-function paralellAnim(promise1) {
-    let promise2 = Promise.resolve();
+function paralellAnim() {
+    let promise1 = Promise.resolve();
     if (navAnimationType == 'switchToLineCount') {
-        promise2 = nav_anim_01xx_10xx(navChart, dirFilter.length);
+        promise1 = nav_anim_01xx_10xx(navChart, dirFilter.length);
     }
     else if (navAnimationType == 'switchToFileCount') {
-        promise2 = nav_anim_10xx_01xx(navChart, dirFilter.length);
+        promise1 = nav_anim_10xx_01xx(navChart, dirFilter.length);
     }
+    let promise2 = window[encodeAnimFunctionName()](infoChart);
     Promise.all([promise1, promise2]).then(() => {
         leaveTransientState();
         if (navAnimationType == 'switchToLineCount')
             state_f_restore = false;
-    });
+    });    
 }
 
-function serialAnim(promise1) {
-    Promise.all([promise1]).then(() => {
-        if (navAnimationType == 'switchToLineCount') {
-            nav_anim_01xx_10xx(navChart, dirFilter.length).then(() => {
+function serialAnim() {
+    let fnName = encodeAnimFunctionName();
+    if (navAnimationType == 'switchToLineCount') {
+        nav_anim_01xx_10xx(navChart, dirFilter.length).then(() => {
+            window[fnName](infoChart).then(() => {
                 leaveTransientState();
                 state_f_restore = false;
             });
-        }
-        else if (navAnimationType == 'switchToFileCount') {
-            nav_anim_10xx_01xx(navChart, dirFilter.length).then(() => {
+        });
+    }
+    else if (navAnimationType == 'switchToFileCount') {
+        nav_anim_10xx_01xx(navChart, dirFilter.length).then(() => {
+            window[fnName](infoChart).then(() => {
                 leaveTransientState();
             });
-        }
-        else
+        });
+    }
+    else {
+        window[fnName](infoChart).then(() => {
             leaveTransientState();
-    });
+        });
+    }
 }
