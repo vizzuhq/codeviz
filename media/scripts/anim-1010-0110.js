@@ -35,7 +35,7 @@ function anim_1010_0110(chart) {
             style: {
                 plot: {
                     paddingLeft: '9em',
-                    yAxis: { label: { color:'#12345600', paddingRight: '1.2em' } },
+                    yAxis: { label: { paddingRight: '1.2em' } },
                     xAxis: { label: { angle: 0 } }
                 }
             }

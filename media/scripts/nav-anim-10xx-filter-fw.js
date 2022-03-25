@@ -53,10 +53,6 @@ function nav_anim_10xx_filter_fw(chart, dirLevel) {
                 plot: {
                     marker: { label: { position: 'right' } },
                     xAxis: { label: { angle: 0 } }
-                },
-                title: {
-                    paddingTop: null,
-                    paddingBottom: null
                 }
             }
         },

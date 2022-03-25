@@ -44,12 +44,6 @@ function nav_anim_10xx_filter_bw(chart, dirLevel) {
                 label: { set: ['Line count'] }
             },
             title: null  
-        },
-        style: {
-            title: {
-                paddingTop: null,
-                paddingBottom: null
-            }
         }
     },
     { duration: 0.3 }
