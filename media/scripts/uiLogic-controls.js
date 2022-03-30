@@ -11,21 +11,21 @@ function allDescendants(node, fn) {
 function disableControls() {
     let ctrlDiv = document.getElementById("idControlDiv");
     allDescendants(ctrlDiv, function(child) {
-        if (child.id == 'idBackLabel') {
-            child.onclick = undefined;
-        }
         child.disabled = true;
     });
+    const container = (document.getElementById('idBackLabel'));
+    if (container != null)
+        container.onclick = undefined;
 }
 
 function enableControls() {
     let ctrlDiv = document.getElementById("idControlDiv");
     allDescendants(ctrlDiv, function(child) {
-        if (child.id == 'idBackLabel') {
-            child.onclick = onLabelBack;
-        }
         child.disabled = false;
     });
+    const container = (document.getElementById('idBackLabel'));
+    if (container != null)
+        container.onclick = onLabelBack;
 }
 
 function onDisplayTypeChanged() {
