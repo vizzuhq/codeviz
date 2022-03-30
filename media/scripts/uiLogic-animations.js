@@ -69,8 +69,10 @@ function performFilteringAnimationFw(event) {
             let filterStr = event.data.marker.categories[levelStr];
             currentDirectory = 'workspace' + filterStr.substring(1);
             setBackLabelState(false);
-            if (dirFilter[dirFilter.length - 1] == filterStr)
+            if (dirFilter[dirFilter.length - 1] == filterStr) {
                 vscode.postMessage({ command: 'showinfo', text: 'No more folder under this level!' });
+                enableControls();
+            }
             else {    
                 dirFilter.push(filterStr);
                 applyFilterFw();

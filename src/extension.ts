@@ -8,7 +8,6 @@ import { Summary } from "./data/vscc_result";
 export function activate(context: ExtensionContext) {
     const showCommand = commands.registerCommand("CodeViz.show", () => {
         let wsPath: Uri;
-        window.showInformationMessage('Preparing \'Code Counter\' data...');
         workspace.workspaceFolders?.map((folder) => {
             if (wsPath == undefined)
                 wsPath = folder.uri;
