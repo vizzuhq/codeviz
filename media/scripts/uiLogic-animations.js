@@ -18,6 +18,10 @@ let dirMaxDepth = 0;
 let databaseFileCount = 0;
 let paralellAnimLimit = 1500;
 let currentDirectory = 'workspace';
+let statusBarTimer = null;
+let progressTimer = null;
+let progressState = 0;
+let delayBeforeProgress = 4000;
 
 function busyPromise(fn) {
     let _resolve;
@@ -104,11 +108,50 @@ function performFilteringAnimationBw() {
     }
 }
 
+function startProgressIndication() {
+    statusBarTimer = setTimeout(() => {
+        statusBarTimer = null;
+        progressTimer = setInterval(() => {
+            let msg = {
+                command: 'statusbarmsg',
+                text: 'CodeViz animation is in progress',
+                timeout: 310
+            };
+            if (progressState == 0)
+                msg.text += '.'
+            if (progressState == 1)
+                msg.text += '..'
+            if (progressState == 2)
+                msg.text += '...'
+            vscode.postMessage(msg);
+            progressState++;
+            if (progressState == 3)
+                progressState = 0;
+        }, 300);
+    }, delayBeforeProgress);
+}
+
+function stopProgressIndication() {
+    if (progressTimer != null)
+        clearTimeout(progressTimer);
+    progressTimer = null;
+    if (statusBarTimer != null) {
+        clearTimeout(statusBarTimer);
+    }
+    else {
+        vscode.postMessage({
+            command: 'statusbarmsg',
+            text: 'CodeViz is ready.',
+            timeout: 2000 });
+    }
+}
+
 function enterTransientState() {
     if (inTransientState)
         return false;
     disableControls();
     inTransientState = true;
+    startProgressIndication();
     return true;
 }
 
@@ -121,6 +164,7 @@ function leaveTransientState() {
     if (state_f_disabled)
         setFilesChekboxState(true, false);
     inTransientState = false;
+    stopProgressIndication();
     return true;
 }
 

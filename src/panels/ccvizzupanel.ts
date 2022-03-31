@@ -89,6 +89,11 @@ export class CCVizzuPanel {
                     case "showerror":
                         window.showErrorMessage(text);
                         return;
+                    case "statusbarmsg":
+                        window.setStatusBarMessage(text,
+                            new Promise((resolve, reject) => {
+                                setTimeout(() => { resolve(true); }, message.timeout);
+                            }));
                 }
             },
             undefined,
