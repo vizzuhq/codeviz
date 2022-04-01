@@ -31,6 +31,9 @@ export class VSCCDataPrep {
             item.filename = item.uri.path;
             codeCounterData.push(item);
         }
+        codeCounterData.sort((a: Result, b: Result) => {
+            return a.uri < b.uri ? 1 : ( a.uri > b.uri ? -1 : 0);
+        });
 		this.preparePathFragments(codeCounterData);
 		this.removeRedundantPathFragments();
 		this.dirStructureDepth = this.getDirStructureDepth();
@@ -108,10 +111,11 @@ export class VSCCDataPrep {
 	}
 
 	preparePathFragments(codeCounterData: Result[]) {
-		this._pathFragments = [];
+        this._pathFragments = [];
 		codeCounterData.forEach(
 			({ uri }) => {
 				let path = uri.toString();
+                console.log(path);
 				let frags = path.split('/');
 				let storage = new Array();
 				frags.pop();
