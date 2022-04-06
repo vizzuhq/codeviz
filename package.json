@@ -18,7 +18,7 @@
     "theme": "dark"
   },
   "license": "SEE LICENSE IN LICENSE.txt",
-  "icon": "https://github.com/vizzuhq/codeviz/blob/master/icon.png",
+  "icon": "icon.png",
   "categories": [
     "Other",
     "Programming Languages",
