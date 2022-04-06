@@ -8,7 +8,10 @@
     "name": "Tamás Czagány",
     "email": "hello@vizzuhq.com"
   },
-  "repository": "https://github.com/vizzuhq/codeviz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vizzuhq/codeviz"
+  },
   "homepage": "https://vizzuhq.com/",
   "engines": {
     "vscode": "^1.46.0"
