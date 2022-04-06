@@ -1,14 +1,38 @@
 {
-  "name": "CodeViz",
-  "displayName": "Code Counter Vizzu",
+  "name": "code-viz",
+  "displayName": "CodeVizz",
   "description": "Source code statistics with animated vizualization.",
-  "version": "0.0.1",
-  "repository": "https://github.com/tczagany/cc-vizzu.git",
+  "version": "0.1.0",
+  "publisher": "vizzuhq",
+  "author": {
+    "name": "Tamás Czagány",
+    "email": "hello@vizzuhq.com"
+  },
+  "repository": "https://github.com/vizzuhq/codeviz",
+  "homepage": "https://vizzuhq.com/",
   "engines": {
     "vscode": "^1.46.0"
   },
+  "galleryBanner": {
+    "color": "#BF9C68",
+    "theme": "dark"
+  },
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "icon": "https://github.com/vizzuhq/codeviz/blob/master/icon.png",
   "categories": [
-    "Other"
+    "Other",
+    "Programming Languages",
+    "Visualization"
+  ],
+  "keywords": [
+    "count",
+    "loc",
+    "code",
+    "stat",
+    "statistics",
+    "line",
+    "chart",
+    "report"
   ],
   "activationEvents": [
     "onCommand:CodeViz.show"
