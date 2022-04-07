@@ -2,7 +2,7 @@
   "name": "code-viz-stat",
   "displayName": "CodeViz Stat",
   "description": "Explore source code statistics with animated vizualizations.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "vizzuhq",
   "author": {
     "name": "Tamás Czagány",
