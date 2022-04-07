@@ -9,7 +9,7 @@ Built on top of the great [VS Code Counter](https://marketplace.visualstudio.com
 
 Built using the open-source Javascript charting library [Vizzu](https://github.com/vizzuhq/vizzu-lib).
 
-If you have a feature request, found a bug or just want to share your experience using CodeViz, come and join the conversation on our GitHub Discussions page.
+If you have a feature request, found a bug or just want to share your experience using CodeViz, come and join the conversation on our [GitHub Discussions page](https://github.com/vizzuhq/codeviz/discussions/).
 
 ## Features
 - Counts and visualizes the files and code lines of source code in the workspace.
