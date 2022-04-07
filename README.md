@@ -19,17 +19,17 @@ If you have a feature request, found a bug or just want to share your experience
 
 ## Usage
 ### Launching CodeViz
-![Launching CodeViz](https://github.com/vizzuhq/codeviz/blob/master/media/guide_1_start.gif)
+![Launching CodeViz](images/guide_1_start.gif)
 
 ### Switch between the no. of lines and the no. of files
-![lines_or_files](https://github.com/vizzuhq/codeviz/blob/master/media/guide_3_dropdown.gif)
+![lines_or_files](images/guide_3_dropdown.gif)
 
 ### Break down the data by languages and/or files
-![Languages_Files_Checkboxes](https://github.com/vizzuhq/codeviz/blob/master/media/guide_2_checkbox.gif)
+![Languages_Files_Checkboxes](images/guide_2_checkbox.gif)
 
 When grouping and coloring by languages is switched off, the files are shown in the decreasing order of the line count.
 
 ### Navigate through your project by clicking on the folders on the left
-![Languages_Files_Checkboxes](https://github.com/vizzuhq/codeviz/blob/master/media/guide_4_navig.gif)
+![Languages_Files_Checkboxes](images/guide_4_navig.gif)
 
 **Enjoy!**
