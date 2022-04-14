@@ -63,6 +63,20 @@ export class CCVizzuPanel {
                 const text = message.text;
                 switch (command) {
                     case "vizzu-ready":
+                        var fs = require('fs');
+                        fs.writeFile("/home/tczagany/Desktop/vizzu/vizzu-lib/.VSCodeCounter/data.json",
+                            JSON.stringify(this._dataTable), function(err: Object) {
+                                if (err)
+                                    console.log(err);
+                            }
+                        );
+                        var fs = require('fs');
+                        fs.writeFile("/home/tczagany/Desktop/vizzu/vizzu-lib/.VSCodeCounter/datasum.json",
+                            JSON.stringify(this._dataSummary), function(err: Object) {
+                                if (err)
+                                    console.log(err);
+                            }
+                        );
                         this._panel.webview.postMessage({
                             command: 'refresh-data-table',
                             dataTable: this._dataTable,
