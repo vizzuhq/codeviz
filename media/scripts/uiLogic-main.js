@@ -6,6 +6,9 @@ let infoChart = undefined;
     window.addEventListener('message', async event => {
         const message = event.data;
         switch (message.command) {
+            case 'clear-data-table':
+                await resetVizzuCharts();
+                break;
             case 'refresh-data-table':
                 await initializingVizzuCharts(message.dataTable);
                 performInitAnimation(message.dataSummary);
@@ -48,4 +51,11 @@ async function initializingVizzuCharts(data) {
         .then(navChart => navChart.animate({data: data}));
     navChart.on('click', performFilteringAnimationFw);
     navChart.on('plot-axis-label-draw', navLabelDrawHandler);
+}
+
+async function resetVizzuCharts() {
+    await infoChart.animate({data: {}});
+    await navChart.animate({data: {}});
+    navChart.off('click');
+    navChart.off('plot-axis-label-draw');
 }

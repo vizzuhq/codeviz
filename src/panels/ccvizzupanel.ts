@@ -25,13 +25,6 @@ export class CCVizzuPanel {
             this.currentPanel._dataSummary = summ;
             let panel = this.currentPanel._panel;
             panel.reveal(ViewColumn.One);
-            if (refreshReq) {
-                panel.webview.postMessage({
-                    command: 'refresh-data-table',
-                    dataTable: data,
-                    dataSummary: summ
-                });
-            }
         }
     }
 
