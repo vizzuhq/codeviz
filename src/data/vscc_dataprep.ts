@@ -115,7 +115,6 @@ export class VSCCDataPrep {
 		codeCounterData.forEach(
 			({ uri }) => {
 				let path = uri.toString();
-                console.log(path);
 				let frags = path.split('/');
 				let storage = new Array();
 				frags.pop();
@@ -128,7 +127,7 @@ export class VSCCDataPrep {
 
 	removeRedundantPathFragments() {
 		let ref = this._pathFragments[0];
-		for(let same = true; same;) {
+		for(let same = this._pathFragments.length > 1; same;) {
 			this._pathFragments.forEach(
 				(comp) => {
 					if (comp[0] == undefined)
@@ -138,9 +137,9 @@ export class VSCCDataPrep {
 				}
 			);
 			if (same)
-			this._pathFragments.forEach(
-					(item) => item.splice(0, 1)
-				);
+                this._pathFragments.forEach(
+                    (item) => item.splice(0, 1)
+                );
 		}
 	}
 
