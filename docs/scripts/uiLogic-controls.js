@@ -94,9 +94,9 @@ function setBackLabelState(disabled) {
     }
     else {
         container.innerHTML = `
-            <vscode-link id="idBackLabel">
+            <a id="idBackLabel">
             Go back!
-            </vscode-link>
+            </a>
             &nbsp; &nbsp; Folder: ${currentDirectory}`;
     }
 }
