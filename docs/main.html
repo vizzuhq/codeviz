@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="${styleMain}"></link>
+        <script type="module" src="${scriptToolkit}"></script>
+        <title>Code Counter Vizzu</title>
+    </head>
+    <body>
+        <h1 class="title" id="label_title">CodeViz</h1>
+        <p class="info">
+            <span id="label_date">date placeholder</span>
+            &nbsp;&nbsp;-&nbsp;&nbsp;
+            <span id="label_dir">dir placeholder</span>
+        </p>
+        <p class="info">
+            <span class="info-item">files: </span><span class="info-value" id="label_files"></span>&nbsp;&nbsp;&nbsp;
+            <span class="info-item">lines: </span><span class="info-value" id="label_lines"></span>&nbsp;&nbsp;&nbsp;
+            <span class="info-item">code: </span><span class="info-value" id="label_code"></span>&nbsp;&nbsp;&nbsp;
+            <span class="info-item">comment: </span><span class="info-value" id="label_comment"></span>&nbsp;&nbsp;&nbsp;
+            <span class="info-item">blank: </span><span class="info-value" id="label_blank"></span>
+        </p>
+        <div id="idControlDiv" class="vizzu-div">
+            <div style="margin-left: 10%;">
+                <vscode-dropdown id="idDispType" position="below" onchange="onDisplayTypeChanged()">
+                    <vscode-option id="idLineCount">Line count</vscode-option>
+                    <vscode-option id="idFileCount">File count</vscode-option>
+                </vscode-dropdown>
+            </div>
+            <div style="margin-right: 10%; display: grid; grid-template-rows: auto auto; justify-items: end;">
+                <div>
+                    <vscode-checkbox id="idChkBoxLang" onchange="onCheckboxLanguages()" checked>Languages</vscode-checkbox>
+                    <vscode-checkbox id="idChkBoxFiles" onchange="onCheckboxFiles()">Files</vscode-checkbox>
+                </div>
+            </div>
+        </div>
+        <p style="margin-left: 4.5%; margin-right: 4.5%;" id="idBackLabelContainer"></p>
+        <div class="vizzu-div">
+            <div style="aspect-ratio: 1/1; width: 100%; height: 60vh;" id="navVizzu"></div>
+            <div style="aspect-ratio: 1/1; width: 100%; height: 60vh;" id="infoVizzu"></div>
+        </div>
+        <div class="control-div">
+            <img style="cursor: pointer;" src="${logo}" width="100px" onclick="onVizzuLogo()">
+        </div>
+        ${scripts}
+    </body>
+</html>

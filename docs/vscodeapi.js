@@ -31,10 +31,10 @@ let vscodeapi = {
         if (msgParam.command == 'vizzu-ready') {
             let data = null;
             let datasum = null;
-            getJSONSync('https://vizzuhq.github.io/codeviz/data.json').then(
+            getJSONSync('data.json').then(
                 (d1) => {
                     data = d1;
-                    getJSONSync('https://vizzuhq.github.io/codeviz/datasum.json').then(
+                    getJSONSync('datasum.json').then(
                         (d2) => {
                             datasum = d2;
                             window.postMessage({
