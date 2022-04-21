@@ -94,7 +94,7 @@ function setBackLabelState(disabled) {
     }
     else {
         container.innerHTML = `
-            <a id="idBackLabel">
+            <a class="link-button" id="idBackLabel">
             Go back!
             </a>
             &nbsp; &nbsp; Folder: ${currentDirectory}`;
