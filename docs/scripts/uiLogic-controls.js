@@ -90,7 +90,7 @@ function setBackLabelState(disabled) {
     const container = (document.getElementById('idBackLabelContainer'));
     if (disabled) {
         container.innerHTML = `
-            Click on a folder below! &nbsp; &nbsp;`;
+            Click on a folder to zoom in &nbsp; &nbsp;`;
     }
     else {
         container.innerHTML = `
