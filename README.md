@@ -1,13 +1,14 @@
 # CodeViz Stat
 
-Interactive source code statistics with animated vizualizations.
+One-click interactive source code stats using animated charts.
 
+- [Online demo](https://vizzuhq.github.io/codeviz/)
 - [GitHub](https://github.com/vizzuhq/codeviz/)
-- [Marketplace](https://marketplace.visualstudio.com/items?itemName=vizzuhq.code-viz-stat)
-
-Built on top of the great [VS Code Counter](https://marketplace.visualstudio.com/items?itemName=uctakeoff.vscode-counter) by Kentaro Usiyama.
+- [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=vizzuhq.code-viz-stat)
 
 Built using the open-source Javascript charting library [Vizzu](https://github.com/vizzuhq/vizzu-lib).
+
+Built on top of the great [VS Code Counter](https://marketplace.visualstudio.com/items?itemName=uctakeoff.vscode-counter) by Kentaro Usiyama.
 
 If you have a feature request, found a bug or just want to share your experience using CodeViz, come and join the conversation on our [GitHub Discussions page](https://github.com/vizzuhq/codeviz/discussions/).
 
