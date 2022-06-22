@@ -5,9 +5,9 @@ let navChart = undefined;
 let infoChart = undefined;
 
 function setTitle(project) {
-    const title = project 
-    ? `CodeViz demo: ${project}`
-    : 'CodeViz demo';
+    const title = project[0].toUpperCase() + project.substring(1) 
+    ? `CodeViz Stat Demo: ${project}`
+    : 'CodeViz Stat Demo';
 
     document.title = title;
     document.getElementById('label_title').innerText = title;
