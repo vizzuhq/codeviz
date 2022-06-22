@@ -6,7 +6,7 @@ let infoChart = undefined;
 
 function setTitle(project) {
     const title = project 
-    ? `CodeViz Stat Demo: ${project}[0].toUpperCase() + ${project}.substring(1)`
+    ? `CodeViz Stat Demo: ${project[0].toUpperCase()} + ${project.substring(1)}`
     : 'CodeViz Stat Demo';
 
     document.title = title;
