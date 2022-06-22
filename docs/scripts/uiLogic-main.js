@@ -4,9 +4,16 @@ const vscode = acquireVsCodeApi(project);
 let navChart = undefined;
 let infoChart = undefined;
 
-document.title = project 
+function setTitle(project) {
+    const title = project 
     ? `CodeViz demo: ${project}`
     : 'CodeViz demo';
+
+    document.title = title;
+    document.getElementById('label_title').innerText = title;
+}
+
+setTitle(project);
 
 (function () {
     window.addEventListener('message', async event => {
