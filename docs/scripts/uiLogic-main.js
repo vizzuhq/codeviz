@@ -4,6 +4,10 @@ const vscode = acquireVsCodeApi(project);
 let navChart = undefined;
 let infoChart = undefined;
 
+document.title = project 
+    ? `CodeViz demo: ${project}`
+    : 'CodeViz demo';
+
 (function () {
     window.addEventListener('message', async event => {
         const message = event.data;
