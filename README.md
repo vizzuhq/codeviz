@@ -2,7 +2,7 @@
 
 One-click interactive source code stats using animated charts.
 
-- [Online demo](https://vizzuhq.github.io/codeviz/)
+- Online demos: [vizzu-lib](https://vizzuhq.github.io/codeviz/?project=vizzu-lib), [pyscript](https://vizzuhq.github.io/codeviz/?project=pyscript), [bitcoin](https://vizzuhq.github.io/codeviz/?project=bitcoin), [go-ethereum](https://vizzuhq.github.io/codeviz/?project=go-ethereum), [prysm](https://vizzuhq.github.io/codeviz/?project=prysm)
 - [GitHub](https://github.com/vizzuhq/codeviz/)
 - [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=vizzuhq.code-viz-stat)
 

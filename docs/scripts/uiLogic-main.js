@@ -1,4 +1,6 @@
-const vscode = acquireVsCodeApi();
+const params = new URLSearchParams(window.location.search);
+const project = params.get('project');
+const vscode = acquireVsCodeApi(project);
 let navChart = undefined;
 let infoChart = undefined;
 
