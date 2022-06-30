@@ -26,33 +26,34 @@ function getJSONSync(url) {
     });
 }
 
-let vscodeapi = {
-    postMessage: function(msgParam) {
-        if (msgParam.command == 'vizzu-ready') {
-            let data = null;
-            let datasum = null;
-            getJSONSync('data.json').then(
-                (d1) => {
-                    data = d1;
-                    getJSONSync('datasum.json').then(
-                        (d2) => {
-                            datasum = d2;
-                            window.postMessage({
-                                command: 'refresh-data-table',
-                                dataTable: data,
-                                dataSummary: datasum
-                            });                                            
-                        }
-                    );        
-                }
-            );
+function acquireVsCodeApi(project) {
+    return {
+        postMessage: function(msgParam) {
+            if (msgParam.command == 'vizzu-ready') {
+                let data = null;
+                let datasum = null;
+                if (!project) project = 'vizzu-lib';
+                let jsonfile = project+'-data.json';
+                getJSONSync(jsonfile).then(
+                    (d1) => {
+                        data = d1;
+                        let jsonfile = project+'-datasum.json';
+                        getJSONSync(jsonfile).then(
+                            (d2) => {
+                                datasum = d2;
+                                window.postMessage({
+                                    command: 'refresh-data-table',
+                                    dataTable: data,
+                                    dataSummary: datasum
+                                });                                            
+                            }
+                        );        
+                    }
+                );
+            }
+            else {
+                console.log(msgParam);
+            }
         }
-        else {
-            console.log(msgParam);
-        }
-    }
-};
-
-function acquireVsCodeApi() {
-    return vscodeapi;
+    };
 }
