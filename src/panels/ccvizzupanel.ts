@@ -18,9 +18,29 @@ export class CCVizzuPanel {
         this._pageGen = new PageGenerator(panel, extensionUri);
     }
 
+    public static export(folderPath: string) {
+        if (CCVizzuPanel.currentPanel && this.currentPanel) {
+            if (this.currentPanel._dataTable != undefined)
+                CCVizzuPanel.currentPanel._jsonDataExport(folderPath);
+            else
+                window.showErrorMessage("No data to export");
+        }
+    }
+
+    public static import(folderPath: string) {
+        if (CCVizzuPanel.currentPanel) {
+            CCVizzuPanel.currentPanel._jsonDataImport(folderPath);
+            if (this.currentPanel != undefined) {
+                let panel = this.currentPanel._panel;
+                panel.webview.postMessage({
+                    command: 'clear-data-table'
+                });
+            }
+        }
+    }
+
     public static refresh(data: Object, summ: Summary) {
         if (this.currentPanel != undefined) {
-            let refreshReq = this.currentPanel._dataTable != undefined;
             this.currentPanel._dataTable = data;
             this.currentPanel._dataSummary = summ;
             let panel = this.currentPanel._panel;
@@ -51,7 +71,7 @@ export class CCVizzuPanel {
         while (this._disposables.length) {
             const disposable = this._disposables.pop();
             if (disposable) {
-            disposable.dispose();
+                disposable.dispose();
             }
         }
     }
@@ -63,7 +83,6 @@ export class CCVizzuPanel {
                 const text = message.text;
                 switch (command) {
                     case "vizzu-ready":
-                        //this._jsonDataExport('/home/...your home directory name comes here.../');
                         this._panel.webview.postMessage({
                             command: 'refresh-data-table',
                             dataTable: this._dataTable,
@@ -96,16 +115,30 @@ export class CCVizzuPanel {
         );
     }
 
+    private _jsonDataImport(rootDir: string) {
+        if (rootDir.endsWith('/'))
+            rootDir = rootDir.substring(0, rootDir.length - 1);
+        this._dataTable = {};
+        this._dataSummary = {};
+        const fs = require('fs');
+        const text1 = fs.readFileSync(rootDir + '/data.json', {encoding:'utf8', flag:'r'});
+        this._dataTable = JSON.parse(text1);
+        const text2 = fs.readFileSync(rootDir + '/datasum.json', {encoding:'utf8', flag:'r'});
+        this._dataSummary = JSON.parse(text2);
+    }
+    
     private _jsonDataExport(rootDir: string) {
+        if (rootDir.endsWith('/'))
+            rootDir = rootDir.substring(0, rootDir.length - 1);
         var fs = require('fs');
-        fs.writeFile(rootDir + 'data.json',
+        fs.writeFile(rootDir + '/data.json',
             JSON.stringify(this._dataTable), function(err: Object) {
                 if (err)
                     console.log(err);
             }
         );
         var fs = require('fs');
-        fs.writeFile(rootDir + 'datasum.json',
+        fs.writeFile(rootDir + '/datasum.json',
             JSON.stringify(this._dataSummary), function(err: Object) {
                 if (err)
                     console.log(err);

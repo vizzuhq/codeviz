@@ -44,7 +44,8 @@
     "report"
   ],
   "activationEvents": [
-    "onCommand:CodeViz.show"
+    "onCommand:CodeViz.show",
+    "onCommand:CodeViz.import"
   ],
   "extensionDependencies": [
     "uctakeoff.vscode-counter"
@@ -63,6 +64,14 @@
       {
         "command": "CodeViz.show",
         "title": "CodeViz: Show statistics"
+      },
+      {
+        "command": "CodeViz.import",
+        "title": "CodeViz: Import statistics"
+      },
+      {
+        "command": "CodeViz.export",
+        "title": "CodeViz: Export statistics"
       }
     ]
   },

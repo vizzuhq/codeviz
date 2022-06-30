@@ -1,6 +1,7 @@
 const vscode = acquireVsCodeApi();
 let navChart = undefined;
 let infoChart = undefined;
+let Vizzu = undefined;
 
 (function () {
     window.addEventListener('message', async event => {
@@ -8,7 +9,7 @@ let infoChart = undefined;
         switch (message.command) {
             case 'clear-data-table':
                 await resetVizzuCharts();
-                break;
+            break;
             case 'refresh-data-table':
                 await initializingVizzuCharts(message.dataTable);
                 performInitAnimation(message.dataSummary);
@@ -25,10 +26,9 @@ function importVizzuLibAndCreateCharts() {
         navChart = undefined;
         infoChart = undefined;
         let promise = import('https://cdn.jsdelivr.net/npm/vizzu@~0.4.0/dist/vizzu.min.js');
-        promise.then( (Vizzu) => {
+        promise.then( (lib) => {
             try {
-                navChart = new Vizzu.default('navVizzu');
-                infoChart = new Vizzu.default('infoVizzu');
+                Vizzu = lib;
                 vscode.postMessage({ command: 'vizzu-ready' });
             }
             catch (e) {
@@ -43,6 +43,8 @@ function importVizzuLibAndCreateCharts() {
 }
 
 async function initializingVizzuCharts(data) {
+    navChart = new Vizzu.default('navVizzu');
+    infoChart = new Vizzu.default('infoVizzu');
     await infoChart
         .initializing
         .then(infoChart => infoChart.animate({data: data}));
@@ -58,4 +60,13 @@ async function resetVizzuCharts() {
     await navChart.animate({data: {}});
     navChart.off('click');
     navChart.off('plot-axis-label-draw');
+    let element1 = document.getElementById("navVizzu");
+    while (element1.firstChild) {
+      element1.removeChild(element1.firstChild);
+    }    
+    let element2 = document.getElementById("infoVizzu");
+    while (element2.firstChild) {
+      element2.removeChild(element2.firstChild);
+    }    
+    vscode.postMessage({ command: 'vizzu-ready' });
 }
