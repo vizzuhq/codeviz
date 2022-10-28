@@ -33,17 +33,19 @@ export function activate(context: ExtensionContext) {
             CCVizzuPanel.export(folderPath);
         }
     });
-    const showCommand = commands.registerCommand("CodeViz.show", () => {
+    const showCommand = commands.registerCommand("CodeViz.show", (targetDir: Uri | undefined) => {
         let wsPath: Uri;
         workspace.workspaceFolders?.map((folder) => {
             if (wsPath == undefined)
                 wsPath = folder.uri;
         });
-        commands.executeCommand('extension.vscode-counter.countInWorkspace').then(() => {
+        commands.executeCommand('extension.vscode-counter.countInDirectory', targetDir).then(() => {
             setTimeout(() => {
                 CCVizzuPanel.render(context.extensionUri).then(() => {
                     let source: VSCCDataSource;
-                    source = new VSCCDataSource(wsPath);
+                    if (targetDir == undefined)
+                        targetDir = wsPath;
+                    source = new VSCCDataSource(wsPath, targetDir);
                     if (source.data != undefined) {
                         let data = new VSCCDataPrep();
                         data.makeDataTable(source.data);

@@ -6,7 +6,7 @@ export class VSCCDataSource {
     public date: String = '';
     private _dataFolderUri: Uri;
 
-    public constructor(wsUri: Uri) {
+    public constructor(wsUri: Uri, targetDir: Uri) {
         this._dataFolderUri = Uri.joinPath(wsUri, '.VSCodeCounter');;
         this._selectDataSourceFolder(wsUri);
         this._readDataSource();
@@ -14,7 +14,6 @@ export class VSCCDataSource {
 
 	private _selectDataSourceFolder(wsUri: Uri) {
 		let result: {date: String, path: String}[] = [];
-        let vsccFolder = Uri.joinPath(wsUri, '.VSCodeCounter');
 		const fs = require('fs');
 		const dirPath = fs.readdirSync(this._dataFolderUri.fsPath);
 		dirPath.map((item: String) => {

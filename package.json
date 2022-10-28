@@ -53,10 +53,11 @@
   "main": "./out/extension.js",
   "contributes": {
     "menus": {
-      "view/title": [
+      "explorer/context": [
         {
           "command": "CodeViz.show",
-          "when": "true"
+          "when": "explorerResourceIsFolder",
+          "group": "2_workspace"
         }
       ]
     },
