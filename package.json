@@ -2,7 +2,7 @@
   "name": "code-viz-stat",
   "displayName": "CodeViz Stat",
   "description": "Explore source code statistics with animated vizualizations.",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "publisher": "vizzuhq",
   "author": {
     "name": "Tamás Czagány",
@@ -96,7 +96,8 @@
     "vscode-test": "^1.5.0"
   },
   "dependencies": {
-    "vizzu": "^0.4.7",
-    "@vscode/webview-ui-toolkit": "^0.9.1"
+    "@vscode/webview-ui-toolkit": "^0.9.1",
+    "react": "^18.2.0",
+    "vizzu": "^0.4.8"
   }
 }
